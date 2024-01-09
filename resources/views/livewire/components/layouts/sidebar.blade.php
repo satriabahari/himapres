@@ -59,10 +59,12 @@
                                             <div class="tab-pane active" id="side1">
                                                 <ul class="sidemenu-list">
                                                     <li class="side-menu-label1"><a href="javascript:void(0)">apps</a></li>
+                                                    <li><a href="{{ route('admin.posisi.index') }}"
+                                                            class="slide-item" >Data Posisi</a></li>
                                                     <li><a href="{{ route('admin.users.index') }}"
                                                             class="slide-item" >User</a></li>
                                                 </ul>
-                                            </div>
+                                            </div>  
                                         </div>
                                     </div>
                                 </li>

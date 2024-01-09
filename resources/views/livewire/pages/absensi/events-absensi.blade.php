@@ -38,7 +38,10 @@
                                         <td class="d-flex justify-content-center border-0">
                                             <a href="{{ route('admin.events.edit',$event->id) }}"
                                                 class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i
-                                                    class="fe fe-eye"></i></a>
+                                                    class="fe fe-arrow-up"></i></a>
+                                            <a href="{{ route('admin.events.edit',$event->id) }}"
+                                                class="btn btn-sm btn-secondary badge  mx-2" wire:navigate><i
+                                                    class="fe fe-edit"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

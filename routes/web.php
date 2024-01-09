@@ -11,10 +11,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Livewire\Pages\Events\EditEvents;
 use App\Livewire\Pages\Events\ListEvents;
+use App\Livewire\Pages\Posisi\Editposisi;
+use App\Livewire\Pages\Posisi\Listposisi;
 use App\Livewire\Pages\Roles\CreateRoles;
+use App\Livewire\Pages\Events\Datapeserta;
 use App\Livewire\Pages\Absensi\ListAbsensi;
 use App\Livewire\Pages\Dashboard\Dashboard;
 use App\Livewire\Pages\Events\CreateEvents;
+use App\Livewire\Pages\Posisi\Createposisi;
 use App\Livewire\Pages\Absensi\CreateAbsensi;
 use App\Livewire\Pages\Absensi\EventsAbsensi;
 use App\Http\Controllers\PermissionsController;
@@ -61,9 +65,15 @@ Route::middleware(['auth','role:super-admin'])->name('admin.')->prefix('admin')-
     Route::get('/events',ListEvents::class)->name('events.index');
     Route::get('/events/create',CreateEvents::class)->name('events.create');
     Route::get('/events/edit/{id}',EditEvents::class)->name('events.edit');
+    Route::get('/events/create-peserta/{id}',Datapeserta::class)->name('events.peserta');
 
     Route::get('/absensi',ListAbsensi::class)->name('absensi.index');
     Route::get('/absensi/event/{id}',EventsAbsensi::class)->name('absensi.event');
     Route::get('/absensi/event/create/{id}',CreateAbsensi::class)->name('absensi.event.create');
+
+    Route::get('/posisi',Listposisi::class)->name('posisi.index');
+    Route::get('/posisi/create',Createposisi::class)->name('posisi.create');
+    Route::get('/posisi/edit/{id}',Editposisi::class)->name('posisi.edit');
+
 
 });
