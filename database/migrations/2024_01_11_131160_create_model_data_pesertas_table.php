@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('data_peserta', function (Blueprint $table) {
             $table->id();
-            $table->string('name_event');
-            $table->date('date_start');
-            $table->date('date_end');
-            $table->string('detail');
+            $table->foreignId('absensi_id')->constrained('absensi')->cascadeOnDelete();
+            $table->foreignId('mhs_id')->constrained('mahasiswa')->cascadeOnDelete();
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('data_peserta');
     }
 };

@@ -21,22 +21,19 @@
                         </div>
                     @enderror
 
-                    <form wire:submit='save'>
+                    <form wire:submit.prevent='save'>
                         <div class="">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="name" class="form-label">Name Posisi</label>
                                         <input type="text" class="form-control" id="name" wire:model="name"
-                                            value="{{ old('name') }}" placeholder="name posisi">
+                                            value="{{ $name }}" >
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
-                        <button class="btn btn-primary mt-4 mb-0 right" name="action">Submit</button>
+                        <button class="btn btn-primary mt-4 mb-0 right">Submit</button>
                     </form>
 
                 </div>

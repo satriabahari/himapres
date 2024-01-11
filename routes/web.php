@@ -11,6 +11,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Livewire\Pages\Events\EditEvents;
 use App\Livewire\Pages\Events\ListEvents;
+use App\Livewire\Pages\Mahasiswa\Editmhs;
+use App\Livewire\Pages\Mahasiswa\Listmhs;
 use App\Livewire\Pages\Posisi\Editposisi;
 use App\Livewire\Pages\Posisi\Listposisi;
 use App\Livewire\Pages\Roles\CreateRoles;
@@ -18,6 +20,7 @@ use App\Livewire\Pages\Events\Datapeserta;
 use App\Livewire\Pages\Absensi\ListAbsensi;
 use App\Livewire\Pages\Dashboard\Dashboard;
 use App\Livewire\Pages\Events\CreateEvents;
+use App\Livewire\Pages\Mahasiswa\Createmhs;
 use App\Livewire\Pages\Posisi\Createposisi;
 use App\Livewire\Pages\Absensi\CreateAbsensi;
 use App\Livewire\Pages\Absensi\EventsAbsensi;
@@ -74,6 +77,10 @@ Route::middleware(['auth','role:super-admin'])->name('admin.')->prefix('admin')-
     Route::get('/posisi',Listposisi::class)->name('posisi.index');
     Route::get('/posisi/create',Createposisi::class)->name('posisi.create');
     Route::get('/posisi/edit/{id}',Editposisi::class)->name('posisi.edit');
+
+    Route::get('/mahasiswa',Listmhs::class)->name('mahasiswa.index');
+    Route::get('/mahasiswa/create',Createmhs::class)->name('mahasiswa.create');
+    Route::get('/mahasiswa/edit/{id}',Editmhs::class)->name('mahasiswa.edit');
 
 
 });

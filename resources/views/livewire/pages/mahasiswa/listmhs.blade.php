@@ -12,16 +12,17 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Posisi</h3>
+                    <h3 class="card-title">Mahasiswa</h3>
                 </div>
 
                 <div class="card-body">
-                    <a  id="table2-new-row-button " class="btn btn-primary mb-4 "  href="{{route('admin.posisi.create')}}" wire:navigate>Add New </a>
+                    <a  id="table2-new-row-button " class="btn btn-primary mb-4 "  href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
                     <div class="table-responsive text-center">
                         <table class="table table-bordered border text-nowrap mb-0 " id="new-edit">
                             <thead class="text-center">
                                 <tr>
                                     <th>No</th>
+                                    <th>nim </th>
                                     <th>name</th>
                                     <th>Created At</th>
                                     <th>Action</th>
@@ -29,7 +30,7 @@
                             </thead>
                             <tbody>
                                 </tr>
-                                @foreach ($data as $dt )
+                                {{-- @foreach ($data as $dt )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $dt->name }}</td>
@@ -43,7 +44,7 @@
                                                 </button>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
 
 
                             </tbody>
