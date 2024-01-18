@@ -30,13 +30,14 @@
                             </thead>
                             <tbody>
                                 </tr>
-                                {{-- @foreach ($data as $dt )
+                                @foreach ($data as $dt )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $dt->nim }}</td>
                                         <td>{{ $dt->name }}</td>
                                         <td>{{ $dt->created_at }}</td>
                                         <td class="d-flex justify-content-center border-0">
-                                            <a href="{{ route('admin.posisi.edit',$dt->id) }}"
+                                            <a href="{{ route('admin.mahasiswa.edit',$dt->id) }}"
                                             class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i
                                                 class="fe fe-edit"></i></a>
                                                 <button class="btn btn-sm btn-danger badge " wire:click="delete({{ $dt->id }})" wire:confirm="Yakin Ingin Menghapus!">
@@ -44,7 +45,7 @@
                                                 </button>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
 
 
                             </tbody>

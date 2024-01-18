@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_peserta', function (Blueprint $table) {
+        Schema::create('data_kehadiran', function (Blueprint $table) {
             $table->id();
             $table->foreignId('absensi_id')->constrained('absensi')->cascadeOnDelete();
-            $table->foreignId('mhs_id')->constrained('mahasiswa')->cascadeOnDelete();
+            $table->foreignId('peserta_id')->constrained('peserta_event')->cascadeOnDelete();
             $table->string('status');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_peserta');
+        Schema::dropIfExists('data_kehadiran');
     }
 };

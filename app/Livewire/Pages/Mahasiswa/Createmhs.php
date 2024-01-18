@@ -7,9 +7,9 @@ use App\Models\ModelMhs;
 
 class Createmhs extends Component
 {
-    public $breadcrumb ="Mahasiswa Create";
+    public $breadcrumb ="Tambah Mahasiswa";
 
-    public $title ="Mahasiswa Create";
+    public $title ="Tambah Mahasiswa";
 
     public $nim;
     public $name;

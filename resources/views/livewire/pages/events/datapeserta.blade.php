@@ -36,8 +36,9 @@
                                         <label for="position" class="form-label">Position</label>
                                         <select name="posisi" id="posisi" wire:model="posisi" class="form-control">
                                             <option value="">Pilih Posisi</option>
-                                            <option value="">A</option>
-                                            <option value="">B</option>
+                                            @foreach ($allpos as $item)
+                                                <option value="{{ $item->name }}">{{ $item->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
