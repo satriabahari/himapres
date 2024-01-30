@@ -8,6 +8,7 @@ use App\Livewire\Pages\Users\EditUsers;
 use App\Livewire\Pages\Users\ListUsers;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Pages\Absensi\ScanRfid;
 use App\Http\Controllers\RolesController;
 use App\Livewire\Pages\Events\EditEvents;
 use App\Livewire\Pages\Events\ListEvents;
@@ -17,6 +18,7 @@ use App\Livewire\Pages\Posisi\Editposisi;
 use App\Livewire\Pages\Posisi\Listposisi;
 use App\Livewire\Pages\Roles\CreateRoles;
 use App\Livewire\Pages\Events\Datapeserta;
+use App\Livewire\Pages\Absensi\DataAbsensi;
 use App\Livewire\Pages\Absensi\ListAbsensi;
 use App\Livewire\Pages\Dashboard\Dashboard;
 use App\Livewire\Pages\Events\CreateEvents;
@@ -73,6 +75,9 @@ Route::middleware(['auth','role:super-admin'])->name('admin.')->prefix('admin')-
     Route::get('/absensi',ListAbsensi::class)->name('absensi.index');
     Route::get('/absensi/event/{id}',EventsAbsensi::class)->name('absensi.event');
     Route::get('/absensi/event/create/{id}',CreateAbsensi::class)->name('absensi.event.create');
+    Route::get('/absensi/event/data/{id}',DataAbsensi::class)->name('absensi.data');
+    Route::get('/absensi/event/scan/{id}',ScanRfid::class)->name('absensi.scan-rfid');
+
 
     Route::get('/posisi',Listposisi::class)->name('posisi.index');
     Route::get('/posisi/create',Createposisi::class)->name('posisi.create');

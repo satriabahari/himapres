@@ -4,6 +4,8 @@ namespace App\Livewire\Pages\Absensi;
 
 use Livewire\Component;
 use App\Models\ModelAbsensi;
+use App\Models\ModelDataPeserta;
+use App\Models\ModelPesertaEvent;
 
 class CreateAbsensi extends Component
 {
@@ -19,8 +21,6 @@ class CreateAbsensi extends Component
 
     protected $rules = [
         'title' => 'required|max:255',
-        'time_start' => 'required|date_format:H:i',
-        'time_end' => 'required|date_format:H:i|after:time_start',
     ];
 
     public function mount($id){
@@ -35,17 +35,36 @@ class CreateAbsensi extends Component
     public function save()
     {
         $this->validate();
+        // Fetch participants for the given event_id
+        $data = ModelPesertaEvent::where('event_id', $this->url_id)->get();
 
         // Logika penyimpanan data event
-        ModelAbsensi::create([
-            'event_id'  => $this->url_id,
-            'title' => $this->title_event,
+        $absensi = ModelAbsensi::create([
+            'event_id'   => $this->url_id,
+            'title'      => $this->title_event,
             'time_start' => $this->time_start,
-            'time_end' => $this->time_end,
+            'time_end'   => $this->time_end,
         ]);
 
-        // Setelah menyimpan, reset nilai input
-        $this->reset(['title_event', 'time_start', 'time_end']);
+
+        // Check if Absensi record is created successfully
+        if ($absensi) {
+            // Loop through participants and create DataPeserta records
+            foreach ($data as $dt) {
+                ModelDataPeserta::create([
+                    'absensi_id' => $absensi->id,
+                    'peserta_id' => $dt->id,
+                    'status'     => '0',
+                ]);
+            }
+
+            // Further logic after successful creation of Absensi and DataPeserta records
+            // You can add additional code here if needed
+        } else {
+            // Handle the case when Absensi creation fails
+            // You may want to log an error or take appropriate action
+            // Example: Log::error('Failed to create Absensi record.');
+        }
 
         // Tampilkan pesan sukses
         session()->flash('message', 'Event berhasil disimpan.');

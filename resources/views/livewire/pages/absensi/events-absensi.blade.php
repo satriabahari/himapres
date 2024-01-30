@@ -29,19 +29,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $event )
+                                @foreach ($data as $meeting )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $event->title }}</td>
-                                        <td>{{ $event->time_start }}</td>
-                                        <td>{{ $event->time_end }}</td>
+                                        <td>{{ $meeting->title }}</td>
+                                        <td>{{ $meeting->time_start }}</td>
+                                        <td>{{ $meeting->time_end }}</td>
                                         <td class="d-flex justify-content-center border-0">
-                                            <a href="{{ route('admin.events.edit',$event->id) }}"
+                                            <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}"
                                                 class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i
                                                     class="fe fe-arrow-up"></i></a>
-                                            <a href="{{ route('admin.events.edit',$event->id) }}"
+                                            <a href="{{ route('admin.absensi.data',$meeting->id) }}"
                                                 class="btn btn-sm btn-secondary badge  mx-2" wire:navigate><i
-                                                    class="fe fe-edit"></i></a>
+                                                    class="fe fe-eye"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
