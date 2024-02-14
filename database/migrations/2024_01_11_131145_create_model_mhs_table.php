@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
             $table->string('nim')->unique();
+            $table->string('card_id')->unique();
             $table->string('name');
             $table->timestamps();
         });

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('data_kehadiran', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('absensi_id')->constrained('absensi')->cascadeOnDelete();
-            $table->foreignId('peserta_id')->constrained('peserta_event')->cascadeOnDelete();
+            $table->String('absensi_id');
+            $table->String('peserta_id');
             $table->string('status');
             $table->timestamps();
         });

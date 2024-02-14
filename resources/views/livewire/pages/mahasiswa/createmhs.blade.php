@@ -24,7 +24,17 @@
                     <form wire:submit='save'>
                         <div class="">
                             <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" wire:model="name"
+                                            value="{{ old('name') }}" placeholder="name ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6">
+
                                     <div class="form-group">
                                         <label for="nim" class="form-label">nim</label>
                                         <input type="text" class="form-control" id="nim" wire:model="nim"
@@ -33,12 +43,11 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" wire:model="name"
-                                            value="{{ old('name') }}" placeholder="name ">
+                                        <label for="ID Card" class="form-label">Card ID</label>
+                                        <input type="text" class="form-control" id="card_id" wire:model="cardId"
+                                            value="{{ old('cardId') }}" placeholder="card ID ">
                                     </div>
                                 </div>
-
 
                             </div>
 

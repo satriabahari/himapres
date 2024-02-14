@@ -11,8 +11,8 @@ class ListAbsensi extends Component
 
     public $title ="Absensi List";
 
-    public $data ;
-
+    public $data;
+    
     public function render()
     {
         $this->data = ModelEvents::all();

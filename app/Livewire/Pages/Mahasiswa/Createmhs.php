@@ -12,11 +12,13 @@ class Createmhs extends Component
     public $title ="Tambah Mahasiswa";
 
     public $nim;
+    public $cardId;
     public $name;
 
     protected $rules = [
         'nim' => 'required|max:255',
         'name' => 'required',
+        'cardId' => 'required',
     ];
 
     public function render()
@@ -29,10 +31,11 @@ class Createmhs extends Component
 
         ModelMhs::create([
             'nim' => $this->nim,
+            'card_id' => $this->cardId,
             'name' => $this->name,
         ]);
 
-        $this->reset(['nim', 'name']);
+        $this->reset(['nim', 'name','cardId']);
 
     }
 
