@@ -25,27 +25,37 @@ class ScanRfid extends Component
     public function submitForm()
     {
         $data = ModelMhs::where('card_id', $this->cardId)
-            ->first();
+                ->orWhere('nim',$this->cardId)
+                ->first();
         if($data){
             $cek = ModelPesertaEvent::where('mhs_id',$data->id)
-            ->first();
+                ->first();
             $this->absensi = $data;
             if($cek){
                 $status = ModelDataPeserta::where('absensi_id',$this->id)
-                            ->where('peserta_id',$cek->mhs_id)
+                            ->where('peserta_id',$cek->id)
                             ->first();
-                if($status == null){
-                    $result = ModelDataPeserta::create([
-                        'absensi_id'    => $this->id,
-                        'peserta_id'    => $cek->mhs_id,
-                        'status'        => '0'
+                if($status->status == "3"){
+                    $status->update([
+                        'status' => '1'
                     ]);
                     $this->pesan_err = null;
+
                 }else{
                     $this->pesan_err = "Anda Telah Melakukan Absensi";
+
                 }
 
+            }else{
+
+                $this->pesan_err = "Data Tidak Ditemukan";
+
             }
+        }
+        else{
+
+            $this->pesan_err = "Data Tidak Ditemukan";
+
         }
         $this->reset(['cardId']);
     }

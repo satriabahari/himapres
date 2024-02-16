@@ -13,6 +13,9 @@ class DataAbsensi extends Component
     public $title ="Data Absensi";
 
     public $data ;
+    public $hadir = 0;
+    public $izin = 0;
+    public $alfa = 0;
 
     public function mount($id){
         $this->data = ModelDataPeserta::where('absensi_id', $id)
@@ -21,6 +24,20 @@ class DataAbsensi extends Component
         ->select('mahasiswa.nim', 'mahasiswa.name', 'data_kehadiran.status')
         ->orderBy('mahasiswa.name')
         ->get();
+
+        $this->hadir = ModelDataPeserta::where('absensi_id', $id)
+            ->where('data_kehadiran.status', '1')
+            ->count();
+
+        $this->izin = ModelDataPeserta::where('absensi_id', $id)
+            ->where('data_kehadiran.status', '2')
+            ->count();
+
+        $this->alfa = ModelDataPeserta::where('absensi_id', $id)
+            ->where('data_kehadiran.status', '3')
+            ->count();
+
+
     }
 
     public function render()

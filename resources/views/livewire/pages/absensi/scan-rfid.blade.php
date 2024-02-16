@@ -45,8 +45,12 @@
                     <h3 class="text-center">Selamat Pagi </h3>
 
                     @if ($pesan_err != null)
-                        <p>{{ $pesan_err }}</p>
-                        <p>Pukul : {{ $absensi->created_at }}</p>
+                        @if ($absensi != null)
+                            <p>{{ $pesan_err }}</p>
+                            <p>Pukul : {{ $absensi->created_at }}</p>
+                        @else
+                            <p>{{ $pesan_err }}</p>
+                        @endif
                     @else
                         @if ($absensi != null)
                             <i class="fe fe-check-circle text-success fe-lg" style="font-size: 6em;"></i>
