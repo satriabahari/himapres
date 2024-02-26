@@ -3,12 +3,10 @@
     <div class="app-header header sticky">
         <div class="container-fluid main-container">
             <div class="d-flex">
-                <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar"
-                    href="javascript:void(0)"></a>
+                <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
                 <!-- sidebar-toggle-->
                 <a class="logo-horizontal " href="index.html">
-                    <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo"
-                        alt="logo">
+                    <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
                     <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1" alt="logo">
                 </a>
                 <!-- LOGO -->
@@ -18,9 +16,7 @@
                 </div>
                 <div class="d-flex order-lg-2 ms-auto header-right-icons">
                     <!-- SEARCH -->
-                    <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
-                        aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon fe fe-more-vertical"></span>
                     </button>
                     <div class="navbar navbar-collapse responsive-navbar p-0">
@@ -54,9 +50,8 @@
                                     </a>
                                 </div>
                                 <!-- FULL-SCREEN -->
-                                <div class="dropdown  d-flex notifications">
-                                    <a class="nav-link icon" data-bs-toggle="dropdown"><i class="fe fe-bell"></i><span
-                                            class=" pulse"></span>
+                                <!-- <div class="dropdown  d-flex notifications">
+                                    <a class="nav-link icon" data-bs-toggle="dropdown"><i class="fe fe-bell"></i><span class=" pulse"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <div class="drop-heading border-bottom">
@@ -111,9 +106,9 @@
                                             all
                                             Notification</a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- NOTIFICATIONS -->
-                                <div class="dropdown  d-flex message">
+                                <!-- <div class="dropdown  d-flex message">
                                     <a class="nav-link icon text-center" data-bs-toggle="dropdown">
                                         <i class="fe fe-message-square"></i><span class="pulse-danger"></span>
                                     </a>
@@ -130,9 +125,7 @@
                                         </div>
                                         <div class="message-menu message-menu-scroll">
                                             <a class="dropdown-item d-flex" href="chat.html">
-                                                <span
-                                                    class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                    data-bs-image-src="../assets/images/users/1.jpg"></span>
+                                                <span class="avatar avatar-md brround me-3 align-self-center cover-image" data-bs-image-src="../assets/images/users/1.jpg"></span>
                                                 <div class="wd-90p">
                                                     <div class="d-flex">
                                                         <h5 class="mb-1">Peter Theil</h5>
@@ -144,9 +137,7 @@
                                                 </div>
                                             </a>
                                             <a class="dropdown-item d-flex" href="chat.html">
-                                                <span
-                                                    class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                    data-bs-image-src="../assets/images/users/15.jpg"></span>
+                                                <span class="avatar avatar-md brround me-3 align-self-center cover-image" data-bs-image-src="../assets/images/users/15.jpg"></span>
                                                 <div class="wd-90p">
                                                     <div class="d-flex">
                                                         <h5 class="mb-1">Abagael Luth</h5>
@@ -158,9 +149,7 @@
                                                 </div>
                                             </a>
                                             <a class="dropdown-item d-flex" href="chat.html">
-                                                <span
-                                                    class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                    data-bs-image-src="../assets/images/users/12.jpg"></span>
+                                                <span class="avatar avatar-md brround me-3 align-self-center cover-image" data-bs-image-src="../assets/images/users/12.jpg"></span>
                                                 <div class="wd-90p">
                                                     <div class="d-flex">
                                                         <h5 class="mb-1">Brizid Dawson</h5>
@@ -172,9 +161,7 @@
                                                 </div>
                                             </a>
                                             <a class="dropdown-item d-flex" href="chat.html">
-                                                <span
-                                                    class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                    data-bs-image-src="../assets/images/users/4.jpg"></span>
+                                                <span class="avatar avatar-md brround me-3 align-self-center cover-image" data-bs-image-src="../assets/images/users/4.jpg"></span>
                                                 <div class="wd-90p">
                                                     <div class="d-flex">
                                                         <h5 class="mb-1">Shannon Shaw</h5>
@@ -186,9 +173,7 @@
                                                 </div>
                                             </a>
                                             <a class="dropdown-item d-flex" href="chat.html">
-                                                <span
-                                                    class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                    data-bs-image-src="../assets/images/users/3.jpg"></span>
+                                                <span class="avatar avatar-md brround me-3 align-self-center cover-image" data-bs-image-src="../assets/images/users/3.jpg"></span>
                                                 <div class="wd-90p">
                                                     <div class="d-flex">
                                                         <h5 class="mb-1">Cherry Blossom</h5>
@@ -202,24 +187,20 @@
 
                                         </div>
                                         <div class="dropdown-divider m-0"></div>
-                                        <a href="javascript:void(0)"
-                                            class="dropdown-item text-center p-3 text-muted">See all
+                                        <a href="javascript:void(0)" class="dropdown-item text-center p-3 text-muted">See all
                                             Messages</a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- MESSAGE-BOX -->
-                                <div class="dropdown d-flex header-settings">
-                                    <a href="javascript:void(0);" class="nav-link icon"
-                                        data-bs-toggle="sidebar-right" data-target=".sidebar-right">
+                                <!-- <div class="dropdown d-flex header-settings">
+                                    <a href="javascript:void(0);" class="nav-link icon" data-bs-toggle="sidebar-right" data-target=".sidebar-right">
                                         <i class="fe fe-align-right"></i>
                                     </a>
-                                </div>
+                                </div> -->
                                 <!-- SIDE-MENU -->
                                 <div class="dropdown d-flex profile-1">
-                                    <a href="javascript:void(0)" data-bs-toggle="dropdown"
-                                        class="nav-link leading-none d-flex">
-                                        <img src="../assets/images/users/21.jpg" alt="profile-user"
-                                            class="avatar  profile-user brround cover-image">
+                                    <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
+                                        <img src="../assets/images/users/21.jpg" alt="profile-user" class="avatar  profile-user brround cover-image">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <div class="drop-heading">
@@ -232,15 +213,15 @@
                                         <a class="dropdown-item" href="profile.html">
                                             <i class="dropdown-icon fe fe-user"></i> Profile
                                         </a>
-                                        <a class="dropdown-item" href="email-inbox.html">
+                                        <!-- <a class="dropdown-item" href="email-inbox.html">
                                             <i class="dropdown-icon fe fe-mail"></i> Inbox
                                             <span class="badge bg-danger rounded-pill float-end">5</span>
                                         </a>
                                         <a class="dropdown-item" href="lockscreen.html">
                                             <i class="dropdown-icon fe fe-lock"></i> Lockscreen
-                                        </a>
+                                        </a> -->
                                         {{-- <a class="dropdown-item" href="{{ route('logout') }}">
-                                            <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
+                                        <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                                         </a> --}}
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
