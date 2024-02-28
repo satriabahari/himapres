@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nim')->unique();
             $table->string('card_id')->unique();
             $table->string('name');
-            $table->string('divisi');
+            $table->string('qrcode');
+            $table->string('jabatan');
+            // $table->string('divisi');
             $table->timestamps();
         });
     }
