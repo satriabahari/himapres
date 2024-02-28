@@ -12,11 +12,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Mahasiswa</h3>
+                    <h3 class="card-title" style="width: -webkit-fill-available;">Mahasiswa</h3>
+                    <a id="table2-new-row-button" class="btn btn-primary" href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
                 </div>
 
                 <div class="card-body">
-                    <a id="table2-new-row-button " class="btn btn-primary mb-4 " href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
+
 
                     <div class="table-responsive text-center">
                         <table class="table table-bordered border text-nowrap mb-0 " id="myTable">

@@ -165,6 +165,9 @@
     <!-- Switcher js -->
     <script src="{{ url('assets/switcher/js/switcher.js') }}"></script>
 
+    <!-- demo data tables js -->
+    <script src="{{ url('demo/demodatatables.js') }}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     {{-- @persist('notify')
