@@ -19,7 +19,7 @@
                     <a id="table2-new-row-button " class="btn btn-primary mb-4 " href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
 
                     <div class="table-responsive text-center">
-                        <table class="table table-bordered border text-nowrap mb-0 " id="new-edit">
+                        <table class="table table-bordered border text-nowrap mb-0 " id="myTable">
                             <thead class="text-center">
                                 <tr>
                                     <th>No</th>
@@ -60,6 +60,8 @@
     </div>
     <!-- End Row -->
 
+    <!-- end datatable -->
+
     <!-- modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -91,4 +93,5 @@
             const qrcode = new QRCode(div, text);
         }
     </script>
+    <!-- end modal -->
 </div>

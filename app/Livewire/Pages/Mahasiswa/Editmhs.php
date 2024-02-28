@@ -45,7 +45,7 @@ class Editmhs extends Component
         // Logika penyuntingan data event
         $mhs = ModelMhs::find($this->idMhs);
         if ($mhs) {
-            if ($this->jabatan == null || $this->jabatan = "") {
+            if ($this->jabatan == null) {
                 $mhs->update([
                     'nim' => $this->nim,
                     'name' => $this->name,

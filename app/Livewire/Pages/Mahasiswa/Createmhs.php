@@ -41,12 +41,13 @@ class Createmhs extends Component
         } else {
             ModelMhs::create([
                 'nim' => $this->nim,
-                'cardid' => $this->cardId,
+                'card_id' => $this->cardId,
                 'name' => $this->name,
                 'jabatan' => $this->jabatan,
             ]);
         }
 
         $this->reset(['nim', 'name', 'jabatan', 'cardId']);
+        session()->flash('message', 'Data berhasil disimpan.');
     }
 }
