@@ -7,11 +7,12 @@ use App\Models\ModelMhs;
 
 class Listmhs extends Component
 {
-    public $breadcrumb ="Mahasiswa List";
+    public $breadcrumb = "Mahasiswa List";
     public $data;
-    public $title ="Mahasiswa List";
+    public $title = "Mahasiswa List";
 
-    public function mount(){
+    public function mount()
+    {
         $this->data = ModelMhs::all();
     }
     public function render()

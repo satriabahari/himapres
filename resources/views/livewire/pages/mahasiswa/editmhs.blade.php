@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name='breadcrumb'>
-        <livewire:components.widget.breadcrumb breadcrumb="{{ __($breadcrumb) }}"/>
+        <livewire:components.widget.breadcrumb breadcrumb="{{ __($breadcrumb) }}" />
     </x-slot>
 
     <div class="row">
@@ -15,33 +15,42 @@
                 </div>
                 <div class="card-body">
                     @error('name')
-                        <div class="alert alert-danger" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="fa fa-frown-o me-2" aria-hidden="true"> {{ $message }}</i>
-                        </div>
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                        <i class="fa fa-frown-o me-2" aria-hidden="true"> {{ $message }}</i>
+                    </div>
                     @enderror
 
                     <form wire:submit='save'>
                         <div class="">
+
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="nim" class="form-label">nim</label>
-                                        <input type="text" class="form-control" id="nim" wire:model="nim"
-                                            value="{{ $data->nim }}" placeholder="nim ">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" wire:model="name"
-                                            value="{{ $data->name }}" placeholder="name ">
+                                        <input type="text" class="form-control" id="name" wire:model="name" value="{{ $data->name }}" placeholder="name ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jabatan" class="form-label">Jabatan</label>
+                                        <input type="text" class="form-control" id="jabatan" wire:model="jabatan" value="{{ $data->jabatan }}" placeholder="jabatan ">
                                     </div>
                                 </div>
-
-
                             </div>
+                            <div class="row">
+                                <div class="col-lg-6">
 
+                                    <div class="form-group">
+                                        <label for="nim" class="form-label">nim</label>
+                                        <input type="text" class="form-control" id="nim" wire:model="nim" value="{{ $data->nim }}" placeholder="nim ">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="card_id" class="form-label">Card ID</label>
+                                        <input type="text" class="form-control" id="card_id" wire:model="card_id" value="{{ $data->card_id }}" placeholder="card ID ">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-primary mt-4 mb-0 right" name="action">Submit</button>
                     </form>

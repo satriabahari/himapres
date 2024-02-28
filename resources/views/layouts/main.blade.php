@@ -9,8 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sash – Bootstrap 5  Admin & Dashboard Template">
     <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+    <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
     {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ url(assets/images/brand/favicon.ico) }}"> --}}
@@ -21,9 +20,9 @@
     <link id="style" href="{{ url('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- STYLE CSS -->
-     <link href="{{ url('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/style.css') }}" rel="stylesheet">
 
-	<!-- Plugins CSS -->
+    <!-- Plugins CSS -->
     <link href="{{ url('assets/css/plugins.css') }}" rel="stylesheet">
 
     <!--- FONT-ICONS CSS -->
@@ -61,7 +60,7 @@
                 <div class="side-app">
                     <!-- CONTAINER -->
                     <div class="main-container container-fluid">
-                         <!-- PAGE-HEADER -->
+                        <!-- PAGE-HEADER -->
                         <div class="page-header">
                             <h1 class="page-title">{{$breadcrumb}}</h1>
                             <div>
@@ -73,10 +72,10 @@
                         </div>
                         <!-- PAGE-HEADER END -->
 
-                         @yield('content')
+                        @yield('content')
                     </div>
                 </div>
-             </div>
+            </div>
 
         </div>
     </div>
@@ -101,7 +100,7 @@
     <script src="{{ url('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <!-- SPARKLINE JS-->
-    <script src="{{ url('assets/js/jquery.sparkline.min.js')}}" ></script>
+    <script src="{{ url('assets/js/jquery.sparkline.min.js')}}"></script>
 
     <!-- Sticky js -->
     <script src="{{ url('assets/js/sticky.js') }}"></script>
@@ -150,8 +149,8 @@
     <!-- SIDE-MENU JS-->
     <script src="{{ url('assets/plugins/sidemenu/sidemenu.js') }}"></script>
 
-	<!-- TypeHead js -->
-	<script src="{{ url('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
+    <!-- TypeHead js -->
+    <script src="{{ url('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
     <script src="{{ url('assets/js/typehead.js') }}"></script>
 
     <!-- INTERNAL INDEX JS -->
@@ -169,6 +168,8 @@
     <!-- Switcher js -->
     <script src="{{ url('assets/switcher/js/switcher.js') }}"></script>
 
+    <!-- demo datatable js -->
+    <script src="{{ url('demo/demodatatables.js') }}"></script>
 </body>
 
 </html>
