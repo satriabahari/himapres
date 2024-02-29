@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title" style="width: -webkit-fill-available;">Mahasiswa</h3>
+                    <h3 class="card-title" style="width: -webkit-fill-available;">Anggota</h3>
                     <a id="table2-new-row-button" class="btn btn-primary" href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
                 </div>
 
@@ -24,9 +24,9 @@
                             <thead class="text-center">
                                 <tr>
                                     <th>No</th>
-                                    <th>nim </th>
+                                    <th>nim / nip</th>
                                     <th>name</th>
-                                    <th>jabatan</th>
+                                    <th>kategori</th>
                                     <th>qr code</th>
                                     <th>Created At</th>
                                     <th>Action</th>

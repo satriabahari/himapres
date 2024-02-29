@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name_event');
             $table->date('date_start');
             $table->date('date_end');
-            $table->string('detail');
+            $table->text('detail');
             $table->timestamps();
         });
     }
