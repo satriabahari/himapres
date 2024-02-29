@@ -19,7 +19,7 @@
                 <div class="card-body">
 
                     <div class="table-responsive text-center">
-                        <table class="table table-bordered border text-nowrap mb-0 " id="new-edit">
+                        <table class="table table-bordered border text-nowrap mb-0 " id="myTable">
                             <thead class="text-center">
                                 <tr>
                                     <th>No</th>
