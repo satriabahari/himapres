@@ -7,9 +7,9 @@ use App\Models\ModelMhs;
 
 class Createmhs extends Component
 {
-    public $breadcrumb = "Tambah Mahasiswa";
+    public $breadcrumb = "Tambah Anggota";
 
-    public $title = "Tambah Mahasiswa";
+    public $title = "Tambah Anggota";
 
     public $nim;
     public $cardId;

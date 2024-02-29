@@ -7,13 +7,13 @@ use App\Models\ModelMhs;
 
 class Editmhs extends Component
 {
-    public $breadcrumb = "Events List";
+    public $breadcrumb = "Anggota Edit";
     public $data;
     public $nim;
     public $name;
     public $jabatan;
     public $card_id;
-    public $title = "Events List";
+    public $title = "Anggota Edit";
     public $idMhs;
 
     protected $rules = [

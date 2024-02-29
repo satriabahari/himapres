@@ -7,9 +7,9 @@ use App\Models\ModelMhs;
 
 class Listmhs extends Component
 {
-    public $breadcrumb = "Mahasiswa List";
+    public $breadcrumb = "Anggota List";
     public $data;
-    public $title = "Mahasiswa List";
+    public $title = "Anggota List";
 
     public function mount()
     {

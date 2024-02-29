@@ -11,7 +11,7 @@
         <div class="col-md-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Peserta</h4>
+                    <h4 class="card-title">Edit Anggota</h4>
                 </div>
                 <div class="card-body">
                     @error('name')
@@ -31,8 +31,13 @@
                                         <input type="text" class="form-control" id="name" wire:model="name" value="{{ $data->name }}" placeholder="name ">
                                     </div>
                                     <div class="form-group">
-                                        <label for="jabatan" class="form-label">Jabatan</label>
-                                        <input type="text" class="form-control" id="jabatan" wire:model="jabatan" value="{{ $data->jabatan }}" placeholder="jabatan ">
+                                        <label for="jabatan" class="form-label">Kategori</label>
+                                        <select class="form-select" wire:model="jabatan">
+                                            <option value="Mahasiswa" @if ($data->jabatan =='Mahasiswa' ) selected @endif>Mahasiswa</option>
+                                            <option value="Dosen" @if ($data->jabatan =='Dosen' ) selected @endif>Dosen</option>
+                                            <option value="Tamu" @if ($data->jabatan =='Tamu' ) selected @endif>Tamu</option>
+                                        </select>
+
                                     </div>
                                 </div>
                             </div>

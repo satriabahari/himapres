@@ -12,7 +12,7 @@ class ModelMhs extends Model
     protected $table = 'mahasiswa';
     protected $attributes = [
         'qrcode' => "",
-        'jabatan' => "Volunteer"
+        'jabatan' => "Mahasiswa"
     ];
     protected static function booted()
     {
