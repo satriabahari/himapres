@@ -3,7 +3,7 @@
 namespace App\Livewire\Pages\Absensi;
 
 use Livewire\Component;
-use App\Models\ModelDataKehadiran;
+use App\Models\ModelDataPeserta;
 use App\Models\ModelPesertaEvent;
 
 class DataAbsensi extends Component
@@ -19,22 +19,22 @@ class DataAbsensi extends Component
 
     public function mount($id)
     {
-        $this->data = ModelDataKehadiran::where('absensi_id', $id)
+        $this->data = ModelDataPeserta::where('absensi_id', $id)
             ->join('peserta_event', 'peserta_event.id', 'data_kehadiran.peserta_id')
             ->join('mahasiswa', 'mahasiswa.id', 'peserta_event.mhs_id')
             ->select('mahasiswa.nim', 'mahasiswa.name', 'data_kehadiran.status')
             ->orderBy('mahasiswa.name')
             ->get();
 
-        $this->hadir = ModelDataKehadiran::where('absensi_id', $id)
+        $this->hadir = ModelDataPeserta::where('absensi_id', $id)
             ->where('data_kehadiran.status', '1')
             ->count();
 
-        $this->izin = ModelDataKehadiran::where('absensi_id', $id)
+        $this->izin = ModelDataPeserta::where('absensi_id', $id)
             ->where('data_kehadiran.status', '2')
             ->count();
 
-        $this->alfa = ModelDataKehadiran::where('absensi_id', $id)
+        $this->alfa = ModelDataPeserta::where('absensi_id', $id)
             ->where('data_kehadiran.status', '3')
             ->count();
     }
