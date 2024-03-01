@@ -7,8 +7,8 @@ use App\Models\ModelEvents;
 
 class EditEvents extends Component
 {
-    public $breadcrumb ="Edit Event";
-    public $title ="Edit Event";
+    public $breadcrumb = "Edit Event";
+    public $title = "Edit Event";
     public $eventId; // Tambahan properti untuk menyimpan ID event yang akan diedit
     public $title_event;
     public $description;

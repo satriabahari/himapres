@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name='breadcrumb'>
-        <livewire:components.widget.breadcrumb breadcrumb="{{ __($breadcrumb) }}"/>
+        <livewire:components.widget.breadcrumb breadcrumb="{{ __($breadcrumb) }}" />
     </x-slot>
 
     <div class="row">
@@ -14,21 +14,19 @@
                     <h4 class="card-title">Data Peserta</h4>
                 </div>
                 <div class="card-body">
-                    @error('name')
-                        <div class="alert alert-danger" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="fa fa-frown-o me-2" aria-hidden="true"> {{ $message }}</i>
-                        </div>
-                    @enderror
-
+                    @if(session()->has('message'))
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session()->get('message') }}
+                    </div>
+                    @endif
                     <form wire:submit='save'>
                         <div class="">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="nim" class="form-label">NIM</label>
-                                        <input type="text" class="form-control" id="nim" wire:model="nim"
-                                            value="{{ old('nim') }}" placeholder="NIM Peserta">
+                                        <input type="text" class="form-control" id="nim" wire:model="nim" value="{{ old('nim') }}" placeholder="NIM Peserta">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -37,13 +35,11 @@
                                         <select name="posisi" id="posisi" wire:model="posisi" class="form-control">
                                             <option value="">Pilih Posisi</option>
                                             @foreach ($allpos as $item)
-                                                <option value="{{ $item->name }}">{{ $item->name}}</option>
+                                            <option value="{{ $item->id }}">{{ $item->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-
-
                             </div>
 
                         </div>
@@ -62,10 +58,10 @@
                 </div>
                 <div class="card-body">
                     @error('name')
-                        <div class="alert alert-danger" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="fa fa-frown-o me-2" aria-hidden="true"> {{ $message }}</i>
-                        </div>
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                        <i class="fa fa-frown-o me-2" aria-hidden="true"> {{ $message }}</i>
+                    </div>
                     @enderror
 
                     <form wire:submit='save'>
@@ -74,8 +70,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="file" class="form-label">File Excel</label>
-                                        <input type="file" class="form-control" id="file" wire:model="file"
-                                            value="{{ old('file') }}" placeholder="file Peserta">
+                                        <input type="file" class="form-control" id="file" wire:model="file" value="{{ old('file') }}" placeholder="file Peserta">
                                     </div>
                                 </div>
 
