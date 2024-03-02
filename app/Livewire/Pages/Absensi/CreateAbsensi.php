@@ -5,7 +5,7 @@ namespace App\Livewire\Pages\Absensi;
 use Livewire\Component;
 use App\Models\ModelAbsensi;
 use App\Models\ModelPesertaEvent;
-use App\Models\ModelDataPeserta;
+use App\Models\ModelDataKehadiran;
 
 class CreateAbsensi extends Component
 {
@@ -49,7 +49,7 @@ class CreateAbsensi extends Component
 
         if ($absensi) {
             foreach ($data as $dt) {
-                ModelDataPeserta::create([
+                ModelDataKehadiran::create([
                     'absensi_id' => $absensi->id,
                     'peserta_id' => $dt->id,
                     'status'     => '3',
@@ -57,7 +57,7 @@ class CreateAbsensi extends Component
             }
         }
         // else {}
-        session()->flash('message', $absensi);
-        // redirect()->route('admin.absensi.event', $this->url_id);
+        // session()->flash('message', $absensi);
+        redirect()->route('admin.absensi.event', $this->url_id);
     }
 }

@@ -40,7 +40,7 @@
                                     <td>{{ $event->date_end }}</td>
                                     <td>{{ $event->created_at }}</td>
                                     <td class="d-flex justify-content-center border-0">
-                                        <a href="{{ route('admin.events.peserta',$event->id) }}" class="btn btn-sm btn-success badge " wire:navigate><i class="fe fe-plus"></i></a>
+                                        <!-- <a href="{{ route('admin.events.peserta',$event->id) }}" class="btn btn-sm btn-success badge " wire:navigate><i class="fe fe-plus"></i></a> -->
                                         <!-- <a href="{{ route('admin.events.edit',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a> -->
                                         <a href="{{ route('admin.events.detail',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
                                         <!-- <form wire:submit='' class="inline-block" wire:confirm="Yakin Ingin Menghapus?">

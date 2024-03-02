@@ -20,6 +20,18 @@
                         {{ session()->get('message') }}
                     </div>
                     @endif
+                    @if(session()->has('sucses'))
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session()->get('sucses') }}
+                    </div>
+                    @endif
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session('error') }}
+                    </div>
+                    @endif
                     <form wire:submit='save'>
                         <div class="">
                             <div class="row">
@@ -64,7 +76,7 @@
                     </div>
                     @enderror
 
-                    <form wire:submit='save'>
+                    <form wire:submit='saveExcel' enctype="multipart/form-data">
                         <div class="">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -73,9 +85,7 @@
                                         <input type="file" class="form-control" id="file" wire:model="file" value="{{ old('file') }}" placeholder="file Peserta">
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <button class="btn btn-primary mt-4 mb-0 right" name="action">Submit</button>
                     </form>

@@ -56,6 +56,6 @@ class EditEvents extends Component
 
         // Redirect atau lakukan hal lain setelah penyuntingan
         // Misalnya, redirect ke halaman index
-        return redirect()->route('admin.events.index');
+        return redirect()->route('admin.events.detail', $event->id);
     }
 }
