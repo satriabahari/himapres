@@ -26,7 +26,7 @@
                                     <th style="min-width: 350px;">Description</th>
                                     <th>Date Start</th>
                                     <th>Date End</th>
-                                    <th>Created At</th>
+                                    <!-- <th>Created At</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,7 +38,7 @@
                                     <td>{{ $event->detail }}</td>
                                     <td>{{ $event->date_start }}</td>
                                     <td>{{ $event->date_end }}</td>
-                                    <td>{{ $event->created_at }}</td>
+                                    <!-- <td>{{ $event->created_at }}</td> -->
                                     <td class="d-flex justify-content-center border-0">
                                         <!-- <a href="{{ route('admin.events.peserta',$event->id) }}" class="btn btn-sm btn-success badge " wire:navigate><i class="fe fe-plus"></i></a> -->
                                         <!-- <a href="{{ route('admin.events.edit',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a> -->

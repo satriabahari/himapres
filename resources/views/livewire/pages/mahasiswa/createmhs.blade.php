@@ -74,18 +74,12 @@
 
         <div class="col-md-12 col-xl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title">Import Excel</h4>
+                    <a href="" wire:click="getTemplateExcel()" id=" table2-new-row-button" class="btn btn-primary btn-sm">Template</a>
                 </div>
                 <div class="card-body">
-                    @error('name')
-                    <div class="alert alert-danger" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
-                        <i class="fa fa-frown-o me-2" aria-hidden="true"> {{ $message }}</i>
-                    </div>
-                    @enderror
-
-                    <form wire:submit='save'>
+                    <form wire:submit='saveExcel' enctype="multipart/form-data">
                         <div class="">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -98,7 +92,27 @@
                         </div>
                         <button class="btn btn-primary mt-4 mb-0 right" name="action">Submit</button>
                     </form>
-
+                    @if (session()->has('excel'))
+                    <div class="alert mt-4 border border-primary" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                        <div class="me-5">
+                            @foreach (session()->get('excel') as $nt)
+                            @if ($nt[0])
+                            <div class="alert alert-success" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                                {{ $nt[1] }}
+                            </div>
+                            @endif
+                            @if (!$nt[0])
+                            <div class="alert alert-danger" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+                                {{ $nt[1] }}
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
