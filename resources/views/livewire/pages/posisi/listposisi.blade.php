@@ -12,11 +12,19 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
+<<<<<<< HEAD
                     <h3 class="card-title" style="width: -webkit-fill-available;">Data Posisi Absent Event</h3>
+=======
+                    <h3 class="card-title" style="width: -webkit-fill-available;">Posisi</h3>
+>>>>>>> main
                     <a id="table2-new-row-button " class="btn btn-primary" href="{{route('admin.posisi.create')}}" wire:navigate>Add New </a>
                 </div>
 
                 <div class="card-body">
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
                     <div class="table-responsive text-center">
                         <table class="table table-bordered border text-nowrap mb-0 " id="myTable">
                             <thead class="text-center">

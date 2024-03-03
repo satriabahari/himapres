@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('event_id')->constrained('events')->cascadeOnDelete();
             $table->foreignId('mhs_id')->constrained('mahasiswa')->cascadeOnDelete();
-            $table->string('jabatan');
+            $table->foreignId('posisi')->constrained('data_posisi')->restrictOnDelete();
             $table->timestamps();
         });
     }

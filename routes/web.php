@@ -27,6 +27,7 @@ use App\Livewire\Pages\Posisi\Createposisi;
 use App\Livewire\Pages\Absensi\CreateAbsensi;
 use App\Livewire\Pages\Absensi\EventsAbsensi;
 use App\Http\Controllers\PermissionsController;
+use App\Livewire\Pages\Events\DetailEvents;
 use App\Livewire\Pages\Permissions\EditPermission;
 use App\Livewire\Pages\Permissions\ListPermissions;
 use App\Livewire\Pages\Permissions\CreatePermission;
@@ -51,41 +52,40 @@ Auth::routes();
 
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
-Route::middleware(['auth','role:super-admin'])->name('admin.')->prefix('admin')->group(function(){
-    Route::get('/roles',ListRoles::class)->name('roles.index');
-    Route::get('/roles/create',CreateRoles::class)->name('roles.create');
-    Route::get('/roles/edit/{id}',EditRoles::class)->name('roles.edit');
+Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/roles', ListRoles::class)->name('roles.index');
+    Route::get('/roles/create', CreateRoles::class)->name('roles.create');
+    Route::get('/roles/edit/{id}', EditRoles::class)->name('roles.edit');
 
-    Route::get('/permissions',ListPermissions::class)->name('permissions.index');
-    Route::get('/permissions/create',CreatePermission::class)->name('permissions.create');
-    Route::get('/permissions/edit/{id}',EditPermission::class)->name('permissions.edit');
+    Route::get('/permissions', ListPermissions::class)->name('permissions.index');
+    Route::get('/permissions/create', CreatePermission::class)->name('permissions.create');
+    Route::get('/permissions/edit/{id}', EditPermission::class)->name('permissions.edit');
 
-    Route::get('/users',ListUsers::class)->name('users.index');
-    Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.destroy');
-    Route::get('/users/{id}',EditUsers::class)->name('users.show');
-    Route::post('/users/{user}/roles',[EditUsers::class,'assignRole'])->name('users.roles');
+    Route::get('/users', ListUsers::class)->name('users.index');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/{id}', EditUsers::class)->name('users.show');
+    Route::post('/users/{user}/roles', [EditUsers::class, 'assignRole'])->name('users.roles');
 
     // Route::delete('/users/{user}/roles/{role}',[UserController::class,'removeRole'])->name('users.roles.remove');
 
-    Route::get('/events',ListEvents::class)->name('events.index');
-    Route::get('/events/create',CreateEvents::class)->name('events.create');
-    Route::get('/events/edit/{id}',EditEvents::class)->name('events.edit');
-    Route::get('/events/create-peserta/{id}',Datapeserta::class)->name('events.peserta');
+    Route::get('/events', ListEvents::class)->name('events.index');
+    Route::get('/events/create', CreateEvents::class)->name('events.create');
+    Route::get('/events/detail/{id}', DetailEvents::class)->name('events.detail');
+    Route::get('/events/edit/{id}', EditEvents::class)->name('events.edit');
+    Route::get('/events/create-peserta/{id}', Datapeserta::class)->name('events.peserta');
 
-    Route::get('/absensi',ListAbsensi::class)->name('absensi.index');
-    Route::get('/absensi/event/{id}',EventsAbsensi::class)->name('absensi.event');
-    Route::get('/absensi/event/create/{id}',CreateAbsensi::class)->name('absensi.event.create');
-    Route::get('/absensi/event/data/{id}',DataAbsensi::class)->name('absensi.data');
-    Route::get('/absensi/event/scan/{id}',ScanRfid::class)->name('absensi.scan-rfid');
-
-
-    Route::get('/posisi',Listposisi::class)->name('posisi.index');
-    Route::get('/posisi/create',Createposisi::class)->name('posisi.create');
-    Route::get('/posisi/edit/{id}',Editposisi::class)->name('posisi.edit');
-
-    Route::get('/mahasiswa',Listmhs::class)->name('mahasiswa.index');
-    Route::get('/mahasiswa/create',Createmhs::class)->name('mahasiswa.create');
-    Route::get('/mahasiswa/edit/{id}',Editmhs::class)->name('mahasiswa.edit');
+    Route::get('/absensi', ListAbsensi::class)->name('absensi.index');
+    Route::get('/absensi/event/{id}', EventsAbsensi::class)->name('absensi.event');
+    Route::get('/absensi/event/create/{id}', CreateAbsensi::class)->name('absensi.event.create');
+    Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data');
+    Route::get('/absensi/event/scan/{id}', ScanRfid::class)->name('absensi.scan-rfid');
 
 
+    Route::get('/posisi', Listposisi::class)->name('posisi.index');
+    Route::get('/posisi/create', Createposisi::class)->name('posisi.create');
+    Route::get('/posisi/edit/{id}', Editposisi::class)->name('posisi.edit');
+
+    Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index');
+    Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create');
+    Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit');
 });
