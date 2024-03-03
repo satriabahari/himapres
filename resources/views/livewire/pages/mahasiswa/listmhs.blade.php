@@ -17,8 +17,6 @@
                 </div>
 
                 <div class="card-body">
-
-
                     <div class="table-responsive text-center">
                         <table class="table table-bordered border text-nowrap mb-0 " id="myTable">
                             <thead class="text-center">
@@ -28,7 +26,7 @@
                                     <th>name</th>
                                     <th>kategori</th>
                                     <th>qr code</th>
-                                    <th>Created At</th>
+                                    <!-- <th>Created At</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,7 +41,7 @@
                                     <td>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" onclick="generateQRCode('{{$dt->qrcode}}')">QR</button>
                                     </td>
-                                    <td>{{ $dt->created_at }}</td>
+                                    <!-- <td>{{ $dt->created_at }}</td> -->
                                     <td class="d-flex justify-content-center border-0">
                                         <a href="{{ route('admin.mahasiswa.edit',$dt->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a>
                                         <button class="btn btn-sm btn-danger badge " wire:click="delete({{ $dt->id }})" wire:confirm="Yakin Ingin Menghapus!">

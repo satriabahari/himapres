@@ -18,7 +18,7 @@ class ModelMhs extends Model
     {
         static::creating(function ($model) {
             // Mengisi kolom qrkode dengan gabungan id dan card_id
-            $kode = $model->id + $model->card_id;
+            $kode = $model->nim . $model->card_id;
             $model->qrcode = Hash::make($kode);
         });
     }
