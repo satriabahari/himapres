@@ -2,15 +2,21 @@
 
 namespace App\Livewire\Pages\Events;
 
+use App\Http\Controllers\Help\getDataExcel;
 use Livewire\Component;
 use App\Models\ModelMhs;
 use App\Models\ModelPosisi;
 use App\Models\ModelPesertaEvent;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Datapeserta extends Component
 {
+    use WithFileUploads;
     public $breadcrumb = "Adding Peserta";
     public $title = "Adding Peserta";
+
+    public $datasampel;
 
     public $nim;
     public $file;
@@ -30,27 +36,50 @@ class Datapeserta extends Component
         return view('livewire.pages.events.datapeserta');
     }
 
+    public function createPanitia($nim, $posisi, $idevent)
+    {
+        // cek keanggotaan
+        $keanggotaan = ModelMhs::where('mahasiswa.nim', $nim)->first();
+        if ($keanggotaan) {
+            // cek kepanitiaan
+            $kepanitiaan = ModelPesertaEvent::where('mhs_id', $keanggotaan->id)
+                ->where('event_id', $idevent)
+                ->join('data_posisi', 'data_posisi.id', '=', 'peserta_event.posisi')
+                ->first();
+            if ($kepanitiaan) {
+                return [
+                    false,
+                    '[' . $kepanitiaan->name . '] ' . $keanggotaan->name . ' sudah terdaftar'
+                ];
+            } else {
+                ModelPesertaEvent::create([
+                    'event_id' => $idevent,
+                    'mhs_id' => $keanggotaan->id,
+                    'posisi' => $posisi
+                ]);
+                $nameposisi = ModelPosisi::where('id', $posisi)->first('name');
+                return [
+                    true,
+                    '[' . $nameposisi->name . '] ' . $keanggotaan->name . ' berhasil didaftarkan'
+                ];
+            }
+        } {
+            return [
+                false,
+                '[ Keanggotaan ] ' . $nim . ' Belum terdaftar'
+            ];
+        }
+    }
+
     public function save()
     {
         try {
-            $data = ModelMhs::where('mahasiswa.nim', $this->nim)->first();
-            // cek jika sudah terdaftar
-            $datapeserta = ModelPesertaEvent::where('mhs_id', $data->id)
-                ->where('event_id', $this->idEvent)
-                ->first();
-
-            if ($datapeserta) {
-                // Jika sudah terdaftar, beri pesan bahwa sudah terdaftar
-                session()->flash('message', 'Peserta sudah terdaftar');
-            } else {
-                // Jika belum terdaftar, tambahkan data peserta baru
-                ModelPesertaEvent::create([
-                    'event_id' => $this->idEvent,
-                    'mhs_id' => $data->id,
-                    'posisi' => $this->posisi
-                ]);
+            $up = $this->createPanitia($this->nim, $this->posisi, $this->idEvent);
+            if ($up[0]) {
                 $this->reset(['nim', 'posisi']);
-                session()->flash('sucses', 'Peserta berhasil didaftarkan');
+                session()->flash('sucses', $up[1]);
+            } else {
+                session()->flash('error', $up[1]);
             }
         } catch (\Exception $e) {
             // Tangani pesan error
@@ -59,7 +88,21 @@ class Datapeserta extends Component
     }
     public function saveExcel()
     {
-        // ambil data di dalam file excel tanpa harus menyimpan excel
-        // kolom yang dibaca di dalam excel dalah nim dan id_divisi
+        // Validasi file yang diunggah
+        $this->validate([
+            'file' => 'required|file|mimes:xlsx,xls|max:10240', // Maksimum 10MB
+        ]);
+
+        // Baca file Excel menggunakan Maatwebsite\Excel
+        $data = Excel::toArray(new getDataExcel(), $this->file);
+        // dapatkan sheet pertama
+        $sheet1 = $data[0];
+        $notifs = [];
+        foreach ($sheet1 as $row) {
+            $notif = $this->createPanitia($row[0], $row[1], $this->idEvent);
+            $notifs[] = $notif;
+        }
+
+        session()->flash('excel', $notifs);
     }
 }
