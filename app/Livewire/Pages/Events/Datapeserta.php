@@ -3,12 +3,14 @@
 namespace App\Livewire\Pages\Events;
 
 use App\Http\Controllers\Help\getDataExcel;
+use App\Http\Controllers\Help\TemplateExport;
 use Livewire\Component;
 use App\Models\ModelMhs;
 use App\Models\ModelPosisi;
 use App\Models\ModelPesertaEvent;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Expr\AssignOp\Mod;
 
 class Datapeserta extends Component
 {
@@ -19,6 +21,7 @@ class Datapeserta extends Component
     public $datasampel;
 
     public $nim;
+    public $suggestions = [];
     public $file;
     public $posisi;
     public $idEvent;
@@ -28,6 +31,7 @@ class Datapeserta extends Component
     {
         $this->idEvent = $id;
         $this->allpos = ModelPosisi::all();
+        $this->suggestions = ModelMhs::all();
     }
 
 
@@ -85,6 +89,26 @@ class Datapeserta extends Component
             // Tangani pesan error
             session()->flash('error', $e->getMessage());
         }
+    }
+    public function getTemplateExcel()
+    {
+        $sheet1 = [["nim", "id_posisi"]];
+        $sheet2 = ModelMhs::where('jabatan', 'Mahasiswa')->get(['nim', 'name'])->toArray();
+        $sheet3 = ModelMhs::where('jabatan', 'dosen')->get(['nim', 'name'])->toArray();
+        $sheet4 = ModelMhs::where('jabatan', 'tamu')->get(['nim', 'name'])->toArray();
+        $sheet5 = ModelPosisi::all(['id', 'name'])->toArray();
+
+        // Buat array untuk data Excel
+        $data = [
+            'inputan' => $sheet1,
+            'data mahasiswa' => $sheet2,
+            'data dosen' => $sheet3,
+            'data tamu' => $sheet4,
+            'data divisi' => $sheet5
+        ];
+
+        // Export data ke dalam file Excel
+        return Excel::download(new TemplateExport($data, 'template'), 'template_excel.xlsx');
     }
     public function saveExcel()
     {

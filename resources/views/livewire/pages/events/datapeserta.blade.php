@@ -32,7 +32,14 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="nim" class="form-label">NIM</label>
-                                        <input type="text" class="form-control" id="nim" wire:model="nim" value="{{ old('nim') }}" placeholder="NIM Peserta">
+                                        <input type="text" class="form-control" list="nim-list" id="nim" wire:model="nim" value="{{ old('nim') }}" placeholder="NIM Peserta">
+                                        @if(!empty($suggestions))
+                                        <datalist id="nim-list">
+                                            @foreach($suggestions as $suggestion)
+                                            <option value="{{ $suggestion->nim }}">{{ $suggestion->nim }} : {{$suggestion->name}}</option>
+                                            @endforeach
+                                        </datalist>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -59,8 +66,9 @@
     <div class="row">
         <div class="col-md-12 col-xl-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title accordion-header">Import Excel</h4>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Import Excel</h4>
+                    <a href="" wire:click="getTemplateExcel()" id=" table2-new-row-button" class="btn btn-primary btn-sm" wire:navigate>Template</a>
                 </div>
                 <div class="card-body">
                     <form wire:submit='saveExcel' enctype="multipart/form-data">
