@@ -43,9 +43,6 @@
                                         <!-- <a href="{{ route('admin.events.peserta',$event->id) }}" class="btn btn-sm btn-success badge " wire:navigate><i class="fe fe-plus"></i></a> -->
                                         <!-- <a href="{{ route('admin.events.edit',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a> -->
                                         <a href="{{ route('admin.events.detail',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
-                                        <!-- <form wire:submit='' class="inline-block" wire:confirm="Yakin Ingin Menghapus?">
-                                            <button class="btn btn-sm btn-danger badge " type="submit" name="action"><i class="fa fa-trash"></i></button>
-                                        </form> -->
                                     </td>
                                 </tr>
                                 @endforeach

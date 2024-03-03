@@ -23,36 +23,69 @@ class ScanRfid extends Component
         $this->id = $id;
     }
 
-    public function submitForm()
+
+    public function scanIdCard()
     {
-        $data = ModelMhs::where('card_id', $this->cardId)
-            ->orWhere('nim', $this->cardId)
+        $dataAnggota = ModelMhs::where('card_id', $this->cardId)
+            ->first(); // id anggota
+        $this->absensi = $dataAnggota;
+        $this->saveabsent($dataAnggota);
+        $this->reset(['cardId']);
+    }
+    public function scanqr($qrcode)
+    {
+        $dataAnggota = ModelMhs::where('qrcode', $qrcode)
             ->first();
-        if ($data) {
-            $cek = ModelPesertaEvent::where('mhs_id', $data->id)
-                ->first();
-            $this->absensi = $data;
-            if ($cek) {
-                $status = ModelDataKehadiran::where('absensi_id', $this->id)
-                    ->where('peserta_id', $cek->id)
-                    ->first();
-                if ($status->status == "3") {
-                    $status->update([
-                        'status' => '1'
-                    ]);
-                    $this->pesan_err = null;
+        $this->pesan_err = 'absen jalan ditemukan';
+        $this->absensi = $dataAnggota;
+        $this->saveabsent($dataAnggota);
+    }
+
+    public function saveabsent($dataAnggota)
+    {
+        if ($dataAnggota) {
+            $dataAbsensi = ModelAbsensi::find($this->id); // id absensi
+            if ($dataAbsensi) {
+                if ($dataAbsensi->date < now()) {
+                    $this->pesan_err = 'Absen terlambat, tidak dapat melakukan absensi.';
+                    return;
+                } elseif ($dataAbsensi->date > now()) {
+                    $this->pesan_err = 'Absen belum dapat dilakukan karena belum saatnya.';
+                    return;
                 } else {
-                    $this->pesan_err = "Anda Telah Melakukan Absensi";
+                    $dataKepanitiaan = ModelPesertaEvent::where('mhs_id', $dataAnggota->id)
+                        ->where('event_id', $dataAbsensi->event_id)
+                        ->first(); // id kepanitiaan
+                    if ($dataKepanitiaan) {
+                        $status = ModelDataKehadiran::where('absensi_id', $this->id)
+                            ->where('peserta_id', $dataKepanitiaan->id)
+                            ->first();
+                        if ($status->status == "3") {
+                            if ($dataAbsensi->time_start <= now()) {
+                                if ($dataAbsensi->time_end >= now()) {
+                                    $status->update([
+                                        'status' => '1'
+                                    ]);
+                                }
+                            } else {
+                                $this->pesan_err = 'Absen belum dapat dilakukan karena belum saatnya.';
+                            }
+
+
+                            $this->pesan_err = null;
+                        } else {
+                            $this->pesan_err = 'Anda sudah absent';
+                        }
+                    } else {
+                        $this->pesan_err = 'Kepanitiaan anda tidak ditemukan';
+                    }
                 }
             } else {
-
-                $this->pesan_err = "Data Tidak Ditemukan";
+                $this->pesan_err = 'Sesi absent tidak ditemukan';
             }
         } else {
-
-            $this->pesan_err = "Data Tidak Ditemukan";
+            $this->pesan_err = 'Keanggotaan anda tidak ditemukan';
         }
-        $this->reset(['cardId']);
     }
 
     public function render()
