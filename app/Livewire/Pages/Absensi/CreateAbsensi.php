@@ -10,13 +10,11 @@ use App\Models\ModelDataKehadiran;
 class CreateAbsensi extends Component
 {
     public $breadcrumb = "Absensi Event Create";
-
     public $title = "Absensi Event Create";
-
     public $title_event;
+    public $date;
     public $time_start;
     public $time_end;
-
     public $url_id;
 
     protected $rules = [
@@ -43,6 +41,7 @@ class CreateAbsensi extends Component
         $absensi = ModelAbsensi::create([
             'event_id'   => $this->url_id,
             'title'      => $this->title_event,
+            'date'      => $this->date,
             'time_start' => $this->time_start,
             'time_end'   => $this->time_end,
         ]);
@@ -53,6 +52,7 @@ class CreateAbsensi extends Component
                     'absensi_id' => $absensi->id,
                     'peserta_id' => $dt->id,
                     'status'     => '3',
+                    'keterangan'     => '',
                 ]);
             }
         }

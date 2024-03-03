@@ -32,8 +32,8 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="title_event" class="form-label">Title</label>
-                                        <input type="text" class="form-control" id="title_event" wire:model="title_event" value="{{ old('title_event') }}" placeholder="Title">
+                                        <label for="title_absent" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="title_absent" wire:model="title_absent" value="{{ old('title_absent') }}" placeholder="Title">
                                     </div>
                                 </div>
 
@@ -58,7 +58,7 @@
                             </div>
 
                         </div>
-                        <button class="btn btn-primary mt-4 mb-0 right" name="action">Submit</button>
+                        <button class="btn btn-primary mt-4 mb-0 right" name="action">Update</button>
                     </form>
 
                 </div>

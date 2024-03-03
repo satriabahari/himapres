@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->String('absensi_id');
             $table->String('peserta_id');
+            $table->String('keterangan');
             $table->string('status');
             $table->timestamps();
         });

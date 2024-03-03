@@ -27,6 +27,7 @@ use App\Livewire\Pages\Posisi\Createposisi;
 use App\Livewire\Pages\Absensi\CreateAbsensi;
 use App\Livewire\Pages\Absensi\EventsAbsensi;
 use App\Http\Controllers\PermissionsController;
+use App\Livewire\Pages\Absensi\EditDetailAbsensi;
 use App\Livewire\Pages\Events\DetailEvents;
 use App\Livewire\Pages\Permissions\EditPermission;
 use App\Livewire\Pages\Permissions\ListPermissions;
@@ -77,6 +78,7 @@ Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')
     Route::get('/absensi', ListAbsensi::class)->name('absensi.index');
     Route::get('/absensi/event/{id}', EventsAbsensi::class)->name('absensi.event');
     Route::get('/absensi/event/create/{id}', CreateAbsensi::class)->name('absensi.event.create');
+    Route::get('/absensi/event/edit/{id}', EditDetailAbsensi::class)->name('absensi.event.edit');
     Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data');
     Route::get('/absensi/event/scan/{id}', ScanRfid::class)->name('absensi.scan-rfid');
 
