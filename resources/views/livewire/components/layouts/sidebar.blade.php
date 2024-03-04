@@ -5,10 +5,11 @@
         <div class="app-sidebar">
             <div class="side-header">
                 <a class="header-brand1" href="index.html">
-                    <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
-                    <img src="../assets/images/brand/icon-white.png" class="header-brand-img toggle-logo" alt="logo">
-                    <img src="../assets/images/brand/icon-dark.png" class="header-brand-img light-logo" alt="logo">
-                    <img src="../assets/images/brand/logo-dark.png" class="header-brand-img light-logo1" alt="logo">
+                    <img src="{{ asset('assets/images/hima/HIMASII.png') }}" class="header-brand-img desktop-logo" alt="logo" style="width: 150px;">
+                    <img src="{{ asset('assets/images/hima/si.jpeg') }}" class="header-brand-img toggle-logo rounded-circle" alt="logo">
+                    <img src="{{ asset('assets/images/hima/si.jpeg') }}" class="header-brand-img light-logo" alt="logo">
+                    <img src="{{ asset('assets/images/hima/HIMASII.png') }}" class="header-brand-img light-logo1" alt="logo" style="width: 150px;">
+
                 </a>
                 <!-- LOGO -->
             </div>
@@ -29,10 +30,10 @@
                     </li>
 
                     <li class="slide">
-                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.absensi.index') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Absensi</span></a>
+                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.absensi.index') }}"><i class="side-menu__icon fa fa-qrcode"></i><span class="side-menu__label">Absensi</span></a>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.events.index') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Data Event</span></a>
+                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.events.index') }}"><i class="side-menu__icon fa fa-calendar"></i><span class="side-menu__label">Data Event</span></a>
                     </li>
 
                     <li class="sub-category">
