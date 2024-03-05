@@ -28,18 +28,20 @@
                     <li class="sub-category">
                         <h3>Presensi</h3>
                     </li>
-
+                    @can('Absensi.all')
                     <li class="slide">
                         <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.absensi.index') }}"><i class="side-menu__icon fa fa-qrcode"></i><span class="side-menu__label">Absensi</span></a>
                     </li>
+                    @endcan
+                    @can('Data.event')
                     <li class="slide">
                         <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.events.index') }}"><i class="side-menu__icon fa fa-calendar"></i><span class="side-menu__label">Data Event</span></a>
                     </li>
+                    @endcan
 
                     <li class="sub-category">
                         <h3>Administrator</h3>
                     </li>
-                    @can('data.master')
                     <li class="slide">
                         <a class="side-menu__item has-link" data-bs-toggle="slide" href="#"><i class="side-menu__icon fe fe-database"></i><span class="side-menu__label">Data
                                 Master</span><i class="angle fe fe-chevron-right"></i>
@@ -61,7 +63,6 @@
                             </li>
                         </ul>
                     </li>
-                    @endcan
 
                     @can('data.master')
                     <li class="slide">

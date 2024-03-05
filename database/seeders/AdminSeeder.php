@@ -24,18 +24,10 @@ class AdminSeeder extends Seeder
         ])->assignRole('super-admin');
 
         User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('password') // password
-        ])->assignRole('admin');
-
-
-        User::create([
             'name' => 'kodrat',
             'email' => 'kodrat@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password') // password
-        ])->assignRole('user');
+        ])->assignRole('sekretaris');
     }
 }
