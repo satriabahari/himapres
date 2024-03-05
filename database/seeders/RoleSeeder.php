@@ -15,9 +15,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'super-admin'])->givePermissionTo('data.master','manage.access');
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'user']);
-
+        Role::create(['name' => 'super-admin'])->givePermissionTo('data.master','manage.access','Absensi.all','Data.event','Data.posisi','Data.anggota','Data.users','Data.divisi','Data.keanggotaan','Data.rekap');
+        Role::create(['name' => 'sekretaris'])->givePermissionTo('Absensi.all','Data.event','Data.posisi','Data.anggota','Data.divisi','Data.keanggotaan','Data.rekap');
     }
 }

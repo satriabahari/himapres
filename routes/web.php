@@ -67,8 +67,6 @@ Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')
     Route::get('/users/{id}', EditUsers::class)->name('users.show');
     Route::post('/users/{user}/roles', [EditUsers::class, 'assignRole'])->name('users.roles');
 
-    // Route::delete('/users/{user}/roles/{role}',[UserController::class,'removeRole'])->name('users.roles.remove');
-
     Route::get('/events', ListEvents::class)->name('events.index');
     Route::get('/events/create', CreateEvents::class)->name('events.create');
     Route::get('/events/detail/{id}', DetailEvents::class)->name('events.detail');
@@ -90,4 +88,34 @@ Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')
     Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index');
     Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create');
     Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit');
+});
+
+
+Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
+    Route::middleware(['permission:Data.event'])->group(function () {
+        Route::get('/events', ListEvents::class)->name('events.index');
+        Route::get('/events/create', CreateEvents::class)->name('events.create');
+        Route::get('/events/detail/{id}', DetailEvents::class)->name('events.detail');
+        Route::get('/events/edit/{id}', EditEvents::class)->name('events.edit');
+        Route::get('/events/create-peserta/{id}', Datapeserta::class)->name('events.peserta');
+    });
+
+    Route::middleware(['permission:Absensi.all'])->group(function () {
+        Route::get('/absensi', ListAbsensi::class)->name('absensi.index');
+        Route::get('/absensi/event/{id}', EventsAbsensi::class)->name('absensi.event');
+        Route::get('/absensi/event/create/{id}', CreateAbsensi::class)->name('absensi.event.create');
+        Route::get('/absensi/event/edit/{id}', EditDetailAbsensi::class)->name('absensi.event.edit');
+        Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data');
+        Route::get('/absensi/event/scan/{id}', ScanRfid::class)->name('absensi.scan-rfid');
+    });
+    Route::middleware(['permission:Data.posisi'])->group(function () {
+        Route::get('/posisi', Listposisi::class)->name('posisi.index');
+        Route::get('/posisi/create', Createposisi::class)->name('posisi.create');
+        Route::get('/posisi/edit/{id}', Editposisi::class)->name('posisi.edit');
+    });
+    Route::middleware(['permission:Data.anggota'])->group(function () {
+        Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index');
+        Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create');
+        Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit');
+    });
 });
