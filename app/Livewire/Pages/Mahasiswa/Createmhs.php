@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Mahasiswa;
 
 use App\Http\Controllers\Help\getDataExcel;
+use App\Http\Controllers\Help\TemplateExport;
 use Livewire\Component;
 use App\Models\ModelMhs;
 use Livewire\WithFileUploads;
@@ -62,7 +63,12 @@ class Createmhs extends Component
             if (!isset($row[3])) {
                 $notif = $this->createMhs($row[0], $row[1], $row[2], null);
             } else {
-                $notif = $this->createMhs($row[0], $row[1], $row[2], $row[3]);
+                $allowed_roles = ['Mahasiswa', 'Dosen', 'Tamu'];
+                if (in_array($row[3], $allowed_roles)) {
+                    $notif = $this->createMhs($row[0], $row[1], $row[2], $row[3]);
+                } else {
+                    $notif = $this->createMhs($row[0], $row[1], $row[2], null);
+                }
             }
             $notifs[] = $notif;
         }
@@ -97,5 +103,17 @@ class Createmhs extends Component
                 '[ Error ] ' . $e->getMessage()
             ];
         }
+    }
+    public function getTemplateExcel()
+    {
+        $sheet1 = ['nim', 'card_id', 'name', 'jabatan'];
+        $sheet2 = [
+            ['Ketentuan'],
+            ['1. jabatan beupa [Mahasiswa, Dosen, Tamu]'],
+            ['2. card_id diisi dengan id kartu NFT']
+        ];
+        $data = [$sheet1, $sheet2];
+        // Export data ke dalam file Excel
+        return Excel::download(new TemplateExport($data, 'template'), 'template_excel.xlsx');
     }
 }

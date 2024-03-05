@@ -7,13 +7,19 @@ use App\Models\ModelEvents;
 
 class ListEvents extends Component
 {
-    public $breadcrumb ="Events List";
+    public $breadcrumb = "Events List";
 
-    public $title ="Events List";
+    public $title = "Events List";
 
     public $data;
 
-    public function mount(){
+    public function mount()
+    {
+        $this->data = ModelEvents::all();
+    }
+    public function hapusEvent($id)
+    {
+        ModelEvents::find($id)->delete();
         $this->data = ModelEvents::all();
     }
 

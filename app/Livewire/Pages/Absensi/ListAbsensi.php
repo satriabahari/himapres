@@ -21,6 +21,7 @@ class ListAbsensi extends Component
         $this->data = ModelEvents::whereDate('date_start', '>=', $this->currentDateTime)
             ->whereDate('date_end', '>=', $this->currentDateTime)
             ->get();
+        // $this->data = ModelEvents::all();
     }
 
     public function render()

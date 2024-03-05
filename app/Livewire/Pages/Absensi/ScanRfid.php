@@ -7,20 +7,25 @@ use App\Models\ModelMhs;
 use App\Models\ModelAbsensi;
 use App\Models\ModelDataKehadiran;
 use App\Models\ModelPesertaEvent;
+use Carbon\Carbon;
 
 class ScanRfid extends Component
 {
     public $breadcrumb = "Scan Absensi";
     public $title = "Scan Absensi";
-
+    public $currentDate;
+    public $currentTime;
     public $cardId;
-    public $absensi = null;
+    public $dataAnggota = null;
+    public $dataAbsent;
     public $id;
     public $pesan_err = null;
 
     public function mount($id)
     {
         $this->id = $id;
+        $this->currentDate = Carbon::now()->toDateString();
+        $this->currentTime = Carbon::now()->toTimeString();
     }
 
 
@@ -28,7 +33,7 @@ class ScanRfid extends Component
     {
         $dataAnggota = ModelMhs::where('card_id', $this->cardId)
             ->first(); // id anggota
-        $this->absensi = $dataAnggota;
+        $this->dataAnggota = $dataAnggota;
         $this->saveabsent($dataAnggota);
         $this->reset(['cardId']);
     }
@@ -37,7 +42,7 @@ class ScanRfid extends Component
         $dataAnggota = ModelMhs::where('qrcode', $qrcode)
             ->first();
         $this->pesan_err = 'absen jalan ditemukan';
-        $this->absensi = $dataAnggota;
+        $this->dataAnggota = $dataAnggota;
         $this->saveabsent($dataAnggota);
     }
 
@@ -46,10 +51,10 @@ class ScanRfid extends Component
         if ($dataAnggota) {
             $dataAbsensi = ModelAbsensi::find($this->id); // id absensi
             if ($dataAbsensi) {
-                if ($dataAbsensi->date < now()) {
-                    $this->pesan_err = 'Absen terlambat, tidak dapat melakukan absensi.';
+                if ($dataAbsensi->date < $this->currentDate) {
+                    $this->pesan_err = 'Absen terlambat 1hari, tidak dapat melakukan absensi.';;
                     return;
-                } elseif ($dataAbsensi->date > now()) {
+                } elseif ($dataAbsensi->date > $this->currentDate) {
                     $this->pesan_err = 'Absen belum dapat dilakukan karena belum saatnya.';
                     return;
                 } else {
@@ -61,18 +66,23 @@ class ScanRfid extends Component
                             ->where('peserta_id', $dataKepanitiaan->id)
                             ->first();
                         if ($status->status == "3") {
-                            if ($dataAbsensi->time_start <= now()) {
-                                if ($dataAbsensi->time_end >= now()) {
+                            $this->dataAbsent = $dataAbsensi;
+                            if ($dataAbsensi->time_start <= $this->currentTime) {
+                                if ($dataAbsensi->time_end >= $this->currentTime) {
                                     $status->update([
-                                        'status' => '1'
+                                        'status' => '1',
+                                        'keterangan' => 'Hadir'
+                                    ]);
+                                } else {
+                                    $status->update([
+                                        'status' => '1',
+                                        'keterangan' => 'Terlambat'
                                     ]);
                                 }
+                                $this->pesan_err = null;
                             } else {
                                 $this->pesan_err = 'Absen belum dapat dilakukan karena belum saatnya.';
                             }
-
-
-                            $this->pesan_err = null;
                         } else {
                             $this->pesan_err = 'Anda sudah absent';
                         }

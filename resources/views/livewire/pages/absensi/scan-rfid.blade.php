@@ -17,7 +17,8 @@
 
                 <div class="card-body text-center">
                     <h3 class="text-center">Tempelkan Kartu Anda </br> Pada Reader</h3>
-
+                    <div>
+                    </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -55,27 +56,36 @@
                 </div>
 
                 <div class="card-body text-center">
-                    <h3 class="text-center">Selamat Pagi </h3>
+                    @php
+                    $currentHour = date('H'); // Ambil hanya jam dari waktu saat ini
+                    @endphp
+                    @if ($currentHour >= 5 && $currentHour < 12) <h3 class="text-center">Selamat Pagi</h3>
+                        @elseif ($currentHour >= 12 && $currentHour < 15) <h3 class="text-center">Selamat Siang</h3>
+                            @elseif ($currentHour >= 15 && $currentHour < 18) <h3 class="text-center">Selamat Sore</h3>
+                                @elseif ($currentHour >= 18 && $currentHour < 24) <h3 class="text-center">Selamat Malam</h3>
+                                    @endif
 
-                    @if ($pesan_err != null)
-                    @if ($absensi != null)
-                    <i class="fe fe-check-circle text-success fe-lg" style="font-size: 6em;"></i>
-                    <p>{{ $pesan_err }}</p>
-                    <p>Pukul : {{ $absensi->created_at }}</p>
-                    @else
-                    <i class="fe fe-users text-black fe-lg " style="font-size: 6em;"></i>
-                    <p>{{ $pesan_err }}</p>
-                    @endif
-                    @else
-                    @if ($absensi != null)
-                    <i class="fe fe-check-circle text-success fe-lg" style="font-size: 6em;"></i>
-                    <p class="mt-5">{{ $absensi->name }}</p>
-                    <p>Anda Telah Melakukan Absensi</p>
-                    <p>Pukul : {{ $absensi->created_at }}</p>
-                    @else
-                    <i class="fe fe-users text-black fe-lg " style="font-size: 6em;"></i>
-                    @endif
-                    @endif
+                                    @if ($pesan_err != null)
+                                    @if ($dataAnggota != null)
+                                    <i class="fe fe-check-circle text-success fe-lg" style="font-size: 6em;"></i>
+                                    <p>{{ $pesan_err }}</p>
+                                    <p>Pukul : {{$currentTime}}</p>
+                                    <p>Tanggal : {{$currentDate}}</p>
+                                    @else
+                                    <i class="fe fe-users text-black fe-lg " style="font-size: 6em;"></i>
+                                    <p>{{ $pesan_err }}</p>
+                                    @endif
+                                    @else
+                                    @if ($dataAnggota != null)
+                                    <i class="fe fe-check-circle text-success fe-lg" style="font-size: 6em;"></i>
+                                    <p class="mt-5">{{ $dataAnggota->name }}</p>
+                                    <p>Anda Telah Melakukan Absensi</p>
+                                    <p>Pukul : {{$currentTime}}</p>
+                                    <p>Tanggal : {{$currentDate}}</p>
+                                    @else
+                                    <i class="fe fe-users text-black fe-lg " style="font-size: 6em;"></i>
+                                    @endif
+                                    @endif
 
                 </div>
             </div>

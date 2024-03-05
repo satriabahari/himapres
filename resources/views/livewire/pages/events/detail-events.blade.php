@@ -77,12 +77,18 @@
                             <td>Nama</td>
                             <td>NIM</td>
                             <td>Divisi</td>
+                            <td>Action</td>
                         </tr>
                         @foreach ($dataAnggota as $peserta )
                         <tr>
                             <td class="pe-4">{{ $peserta->name }}</td>
                             <td class="pe-4">{{ $peserta->nim }}</td>
                             <td class="pe-4">{{ $peserta->divisi }}</td>
+                            <td class="pe-4">
+                                <a onclick="deleteid(this)" id="{{$peserta->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-deskripsi="Hapus kepanitiaan [{{ $peserta->nim }}]{{$peserta->name}}?">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </table>
@@ -90,5 +96,34 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <!-- modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Kepanitiaan : </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalDes"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="tomboldelete" class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function deleteid(element) {
+                let parentId = element.id;
+                let modalDes = document.getElementById('modalDes');
+                modalDes.innerText = element.dataset.deskripsi;
+                document.getElementById('tomboldelete').setAttribute('wire:click', "delAnggota('" + parentId + "')");
+            }
+        </script>
+        <!-- end mod    al -->
     </div>
 </div>

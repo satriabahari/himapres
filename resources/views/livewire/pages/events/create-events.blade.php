@@ -34,7 +34,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="description" class="form-label">Description</label>
-                                        <textarea class="form-control" cols="30" rows="5" id="description" wire:model="description" placeholder="Detail Event">{{ old('detail') }}</textarea>
+                                        <textarea class="form-control" cols="30" rows="15" id="description" wire:model="description" placeholder="Detail Event">{{ old('detail') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

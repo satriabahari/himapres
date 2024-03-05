@@ -15,6 +15,13 @@ class Listmhs extends Component
     {
         $this->data = ModelMhs::all();
     }
+    public function hapusAnggota($id)
+    {
+        // hapus datamhs
+        ModelMhs::find($id)->delete();
+        $this->data = ModelMhs::all();
+        return 0;
+    }
     public function render()
     {
         return view('livewire.pages.mahasiswa.listmhs');

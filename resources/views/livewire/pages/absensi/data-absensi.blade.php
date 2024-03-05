@@ -78,15 +78,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $dt->nim }}</td>
                                     <td>{{ $dt->name }}</td>
-                                    <td>
-                                        @if ($dt->created_at)
-                                        @php
-                                        $now = now();
-                                        $diffHours = $dt->created_at->diffInHours($now);
-                                        $maxHours = 2; // Misalnya, maksimal absensi terlambat adalah 2 jam
-                                        @endphp
-
-                                        @if ($diffHours < $maxHours) Pesan: Anda terlambat absen lebih dari 2 jam. @endif @endif </td>
+                                    <td>{{ $dt->keterangan }}</td>
                                     <td>
                                         @if ($dt->status == '1')
                                         <i class="fe fe-check-circle text-success"></i>
