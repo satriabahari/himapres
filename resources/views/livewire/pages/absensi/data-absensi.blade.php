@@ -13,7 +13,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title w-100">{{$dataAbsent->title}} - {{ $dataAbsent->name_event }}</h3>
-                    <a href="{{ route('admin.absensi.event.edit', $dataAbsent->id) }}" class="btn btn-primary btn-sm pe-2" wire:navigate>Edit</a>
+                    @can('Absensi.Edit')
+                        <a href="{{ route('admin.absensi.event.edit', $dataAbsent->id) }}" class="btn btn-primary btn-sm pe-2" wire:navigate>Edit</a>
+                    @endcan
                 </div>
 
                 <div class="card-body row">
@@ -46,7 +48,9 @@
                 <div class="card-header">
                     <h3 class="card-title w-100">Rekap Absent</h3>
                     <button wire:click="refreshAbsent('{{ $id }}')" class="btn btn-secondary btn-sm pe-4 me-3">Refresh</button>
-                    <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm pe-4" wire:navigate>Up Absent</a>
+                    @can('Absensi.Scan-RFID')
+                        <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm pe-4" wire:navigate>Up Absent</a>
+                    @endcan
                 </div>
 
                 <div class="card-body">

@@ -13,7 +13,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title" style="width: -webkit-fill-available;">Anggota</h3>
-                    <a id="table2-new-row-button" class="btn btn-primary" href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
+                    @can('Mahasiswa.Create')
+                        <a id="table2-new-row-button" class="btn btn-primary" href="{{route('admin.mahasiswa.create')}}" wire:navigate>Add New </a>
+                    @endcan
                 </div>
 
                 <div class="card-body">
@@ -42,12 +44,14 @@
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" onclick="generateQRCode('{{$dt->qrcode}}')">QR</button>
                                     </td>
                                     <!-- <td>{{ $dt->created_at }}</td> -->
+                                    @can('Mahasiswa.Edit')
                                     <td class="d-flex justify-content-center border-0">
                                         <a href="{{ route('admin.mahasiswa.edit',$dt->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a>
                                         <button class="btn btn-sm btn-danger badge " wire:click="delete({{ $dt->id }})" wire:confirm="Yakin Ingin Menghapus!">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
+                                    @endcan
                                 </tr>
                                 @endforeach
                             </tbody>

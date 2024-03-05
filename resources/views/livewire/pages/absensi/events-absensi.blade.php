@@ -16,7 +16,10 @@
                 </div>
 
                 <div class="card-body">
-                    <a id="table2-new-row-button " class="btn btn-primary mb-4 " href="{{route('admin.absensi.event.create',$event_id)}}" wire:navigate>Tambah Absensi </a>
+                    @can('Absensi.Create')
+                        <a id="table2-new-row-button " class="btn btn-primary mb-4 " href="{{route('admin.absensi.event.create',$event_id)}}" wire:navigate>Tambah Absensi </a>
+                    @endcan
+
                     <div class="table-responsive text-center">
                         <table class="table table-bordered border text-nowrap mb-0 " id="new-edit">
                             <thead class="text-center">
@@ -38,8 +41,12 @@
                                     <td>{{ $meeting->time_start }}</td>
                                     <td>{{ $meeting->time_end }}</td>
                                     <td class="d-flex justify-content-center border-0">
-                                        <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-arrow-up"></i></a>
-                                        <a href="{{ route('admin.absensi.data',$meeting->id) }}" class="btn btn-sm btn-secondary badge  mx-1" wire:navigate><i class="fe fe-eye"></i></a>
+                                        @can('Absensi.Scan-RFID')
+                                            <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-arrow-up"></i></a>
+                                        @endcan
+                                        @can('Absensi.Data')
+                                            <a href="{{ route('admin.absensi.data',$meeting->id) }}" class="btn btn-sm btn-secondary badge  mx-1" wire:navigate><i class="fe fe-eye"></i></a>
+                                        @endcan
                                         <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>

@@ -16,13 +16,32 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['name' => 'data.master']);
-        Permission::create(['name' => 'manage.access']);
-        Permission::create(['name' => 'Absensi.all']);
-        Permission::create(['name' => 'Data.event']);
-        Permission::create(['name' => 'Data.posisi']);
-        Permission::create(['name' => 'Data.anggota']);
+        Permission::create(['name' => 'Data.Master']);
+        Permission::create(['name' => 'Manage.Access']);
+
+        Permission::create(['name' => 'Event.List']);
+        Permission::create(['name' => 'Event.Create']);
+        Permission::create(['name' => 'Event.Show']);
+        Permission::create(['name' => 'Event.Edit']);
+        Permission::create(['name' => 'Event.Add_Peserta']);
+
+        Permission::create(['name' => 'Absensi.List']);
+        Permission::create(['name' => 'Absensi.Create']);
+        Permission::create(['name' => 'Absensi.Show']);
+        Permission::create(['name' => 'Absensi.Edit']);
+        Permission::create(['name' => 'Absensi.Data']);
+        Permission::create(['name' => 'Absensi.Scan-RFID']);
+
+        Permission::create(['name' => 'Posisi.List']);
+        Permission::create(['name' => 'Posisi.Create']);
+        Permission::create(['name' => 'Posisi.Edit']);
+
+        Permission::create(['name' => 'Mahasiswa.List']);
+        Permission::create(['name' => 'Mahasiswa.Create']);
+        Permission::create(['name' => 'Mahasiswa.Edit']);
+
         Permission::create(['name' => 'Data.users']);
+
         Permission::create(['name' => 'Data.divisi']);
         Permission::create(['name' => 'Data.keanggotaan']);
         Permission::create(['name' => 'Data.rekap']);

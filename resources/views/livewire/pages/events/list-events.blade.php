@@ -13,7 +13,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title" style="width: -webkit-fill-available;">Events</h3>
-                    <a id="table2-new-row-button " class="btn btn-primary" href="{{route('admin.events.create')}}" wire:navigate>Add New </a>
+                    @can('Event.Create')
+                        <a id="table2-new-row-button " class="btn btn-primary" href="{{route('admin.events.create')}}" wire:navigate>Add New </a>
+                    @endcan
                 </div>
 
                 <div class="card-body">

@@ -35,7 +35,10 @@
                                     <td>{{ $event->date_start }} <br>{{ $event->date_end }}</td>
                                     <td>{{ $event->detail }}</td>
                                     <td class="d-flex justify-content-center border-0">
-                                        <a href="{{ route('admin.absensi.event',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
+                                        @can('Absensi.Show')
+                                            <a href="{{ route('admin.absensi.event',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
+                                        @endcan
+
                                     </td>
                                 </tr>
                                 @endforeach

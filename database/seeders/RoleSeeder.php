@@ -15,7 +15,50 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'super-admin'])->givePermissionTo('data.master','manage.access','Absensi.all','Data.event','Data.posisi','Data.anggota','Data.users','Data.divisi','Data.keanggotaan','Data.rekap');
-        Role::create(['name' => 'sekretaris'])->givePermissionTo('Absensi.all','Data.event','Data.posisi','Data.anggota','Data.divisi','Data.keanggotaan','Data.rekap');
+        Role::create(['name' => 'super-admin'])->givePermissionTo(
+            'Data.Master',
+            'Manage.Access',
+            'Absensi.List',
+            'Absensi.Create',
+            'Absensi.Edit',
+            'Absensi.Show',
+            'Absensi.Data',
+            'Absensi.Scan-RFID',
+            'Event.List',
+            'Event.Create',
+            'Event.Show',
+            'Event.Edit',
+            'Event.Add_Peserta',
+            'Posisi.List',
+            'Posisi.Create',
+            'Posisi.Edit',
+            'Mahasiswa.List',
+            'Mahasiswa.Create',
+            'Mahasiswa.Edit',
+            'Data.users',
+            'Data.divisi',
+            'Data.keanggotaan',
+            'Data.rekap');
+        Role::create(['name' => 'sekretaris'])->givePermissionTo(
+            'Absensi.List',
+            'Absensi.Create',
+            'Absensi.Edit',
+            'Absensi.Show',
+            'Absensi.Data',
+            'Absensi.Scan-RFID',
+            'Event.List',
+            'Event.Create',
+            'Event.Show',
+            'Event.Edit',
+            'Event.Add_Peserta',
+            'Posisi.List',
+            'Posisi.Create',
+            'Posisi.Edit',
+            'Mahasiswa.List',
+            'Mahasiswa.Create',
+            'Mahasiswa.Edit',
+            'Data.divisi',
+            'Data.keanggotaan',
+            'Data.rekap');
     }
 }
