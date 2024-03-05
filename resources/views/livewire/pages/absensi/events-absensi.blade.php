@@ -41,15 +41,13 @@
                                     <td>{{ $meeting->time_start }}</td>
                                     <td>{{ $meeting->time_end }}</td>
                                     <td class="d-flex justify-content-center border-0">
-<<<<<<< HEAD
+                                        @can('Absensi.Scan-RFID')
                                             <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-arrow-up"></i></a>
+                                        @endcan
+                                        @can('Absensi.Data')
                                             <a href="{{ route('admin.absensi.data',$meeting->id) }}" class="btn btn-sm btn-secondary badge  mx-1" wire:navigate><i class="fe fe-eye"></i></a>
+                                        @endcan
                                         <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash"></i></a>
-=======
-                                        <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-arrow-up"></i></a>
-                                        <a href="{{ route('admin.absensi.data',$meeting->id) }}" class="btn btn-sm btn-secondary badge  mx-1" wire:navigate><i class="fe fe-eye"></i></a>
-                                        <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-deskripsi="Hapus absen {{ $meeting->title }}?"><i class="fa fa-trash"></i></a>
->>>>>>> 8526b5588b3a4d768b2ea894d0ebcb3fccd20772
                                     </td>
                                 </tr>
                                 @endforeach
