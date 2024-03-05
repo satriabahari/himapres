@@ -7,8 +7,8 @@ use App\Models\ModelEvents;
 
 class CreateEvents extends Component
 {
-    public $breadcrumb ="Craete Event";
-    public $title ="Craete Event";
+    public $breadcrumb = "Craete Event";
+    public $title = "Craete Event";
 
     public $title_event;
     public $description;
@@ -27,7 +27,8 @@ class CreateEvents extends Component
         return view('livewire.pages.events.create-events');
     }
 
-    public function save(){
+    public function save()
+    {
         $this->validate();
 
         // Logika penyimpanan data event
@@ -45,6 +46,5 @@ class CreateEvents extends Component
         session()->flash('message', 'Event berhasil disimpan.');
 
         redirect()->route('admin.events.index');
-
     }
 }

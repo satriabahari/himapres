@@ -29,7 +29,7 @@ class DataAbsensi extends Component
         $this->data = ModelDataKehadiran::where('absensi_id', $id)
             ->join('peserta_event', 'peserta_event.id', 'data_kehadiran.peserta_id')
             ->join('mahasiswa', 'mahasiswa.id', 'peserta_event.mhs_id')
-            ->select('mahasiswa.nim', 'mahasiswa.name', 'data_kehadiran.status')
+            ->select('mahasiswa.nim', 'mahasiswa.name', 'data_kehadiran.status', 'data_kehadiran.keterangan')
             ->orderBy('mahasiswa.name')
             ->get();
 

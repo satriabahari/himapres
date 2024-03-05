@@ -115,8 +115,8 @@
         );
         html5QrcodeScanner.render(onScanSuccess, onScanFailure);
         const scannft = document.getElementById('cardId');
-        setInterval(function() {
-            scannft.focus();
-        }, 100);
+        // setInterval(function() {
+        //     scannft.focus();
+        // }, 100);
     </script>
 </div>

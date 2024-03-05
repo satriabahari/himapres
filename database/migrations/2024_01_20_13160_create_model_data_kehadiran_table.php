@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('data_kehadiran', function (Blueprint $table) {
             $table->id();
-            $table->String('absensi_id');
-            $table->String('peserta_id');
+            $table->String('absensi_id')->constrained('absensi')->cascadeOnDelete();
+            $table->String('peserta_id')->constrained('peserta_event')->cascadeOnDelete();
             $table->String('keterangan');
             $table->string('status');
             $table->timestamps();

@@ -40,7 +40,7 @@
                                     <td class="d-flex justify-content-center border-0">
                                         <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-arrow-up"></i></a>
                                         <a href="{{ route('admin.absensi.data',$meeting->id) }}" class="btn btn-sm btn-secondary badge  mx-1" wire:navigate><i class="fe fe-eye"></i></a>
-                                        <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash"></i></a>
+                                        <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-deskripsi="Hapus absen {{ $meeting->title }}?"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -63,6 +63,9 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Absent : </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <p id="modalDes"></p>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" id="tomboldelete" class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
@@ -73,9 +76,11 @@
         <script>
             function deleteid(element) {
                 let parentId = element.id;
+                let modalDes = document.getElementById('modalDes');
+                modalDes.innerText = element.dataset.deskripsi;
                 document.getElementById('tomboldelete').setAttribute('wire:click', "hapusAbsent('" + parentId + "')");
             }
         </script>
-        <!-- end mod    al -->
     </div>
+    <!-- end mod    al -->
 </div>

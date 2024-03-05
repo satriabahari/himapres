@@ -36,13 +36,13 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $event->name_event }}</td>
                                     <td>{{ $event->detail }}</td>
+                                    <!-- <td><textarea style="width: 100%; border:none;" readonly rows="5">{{ $event->detail }}</textarea></td> -->
                                     <td>{{ $event->date_start }}</td>
                                     <td>{{ $event->date_end }}</td>
                                     <!-- <td>{{ $event->created_at }}</td> -->
                                     <td class="d-flex justify-content-center border-0">
-                                        <!-- <a href="{{ route('admin.events.peserta',$event->id) }}" class="btn btn-sm btn-success badge " wire:navigate><i class="fe fe-plus"></i></a> -->
-                                        <!-- <a href="{{ route('admin.events.edit',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a> -->
                                         <a href="{{ route('admin.events.detail',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
+                                        <a onclick="deleteid(this)" id="{{$event->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#ModalDelete" data-deskripsi="Hapus event <b>{{$event->name_event }}?</b>"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -54,4 +54,33 @@
         </div>
     </div>
     <!-- End Row -->
+    <div>
+        <!-- modal -->
+        <div class="modal fade" id="ModalDelete" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Hapus Absent : </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalDes"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="tomboldelete" class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function deleteid(element) {
+                let parentId = element.id;
+                let modalDes = document.getElementById('modalDes');
+                modalDes.innerHTML = element.dataset.deskripsi;
+                document.getElementById('tomboldelete').setAttribute('wire:click', "hapusEvent('" + parentId + "')");
+            }
+        </script>
+        <!-- end mod    al -->
+    </div>
 </div>
