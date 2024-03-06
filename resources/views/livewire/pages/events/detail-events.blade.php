@@ -11,24 +11,24 @@
         <div class="col-md-12 col-xl-12">
             <div class="card">
                 <div class="card-body d-flex justify-content-between">
-                    <table class="mr-6">
+                    <table class="mr-6 w-sm-100">
                         <tr>
-                            <td class="pe-6 text-nowrap"><b>Title</b></td>
+                            <td class="pe-2 text-nowrap"><b>Title</b></td>
                             <td class="px-2"><b>:</b></td>
                             <td class="pe-4">{{ $dataEvent->name_event }}</td>
                         </tr>
                         <tr>
-                            <td class="pe-6 text-nowrap"><b>Deskripsi</b></td>
+                            <td class="pe-2 text-nowrap"><b>Deskripsi</b></td>
                             <td class="px-2"><b>:</b></td>
                             <td class="pe-4">{{ $dataEvent->detail }}</td>
                         </tr>
                         <tr>
-                            <td class="pe-6 text-nowrap"><b>Tanggal Mulai</b></td>
+                            <td class="pe-2 text-nowrap"><b>Tanggal Mulai</b></td>
                             <td class="px-2"><b>:</b></td>
                             <td class="pe-4">{{ $dataEvent->date_start }}</td>
                         </tr>
                         <tr>
-                            <td class="pe-6 text-nowrap"><b>Tanggal Selesai</b></td>
+                            <td class="pe-2 text-nowrap"><b>Tanggal Selesai</b></td>
                             <td class="px-2"><b>:</b></td>
                             <td class="pe-4">{{ $dataEvent->date_end }}</td>
                         </tr>
