@@ -16,12 +16,13 @@ class ListAbsensi extends Component
     public $data;
     public function mount()
     {
-        $this->currentDateTime = Carbon::now();
+        $this->currentDateTime = Carbon::now()->toDateString();
 
-        // $this->data = ModelEvents::whereDate('date_start', '>=', $this->currentDateTime)
-        //     ->whereDate('date_end', '>=', $this->currentDateTime)
-        //     ->get();
-        $this->data = ModelEvents::all();
+        $this->data = ModelEvents::whereDate('date_start', '<=', $this->currentDateTime)
+            ->whereDate('date_end', '>=', $this->currentDateTime)
+            ->get();
+
+        // $this->data = ModelEvents::all();
     }
 
     public function render()

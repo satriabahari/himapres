@@ -36,7 +36,7 @@
                                     <td>{{ $event->detail }}</td>
                                     <td class="d-flex justify-content-center border-0">
                                         @can('Absensi.Show')
-                                            <a href="{{ route('admin.absensi.event',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
+                                        <a href="{{ route('admin.absensi.event',$event->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-eye"></i></a>
                                         @endcan
 
                                     </td>
