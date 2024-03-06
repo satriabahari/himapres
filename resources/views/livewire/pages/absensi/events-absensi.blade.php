@@ -47,7 +47,7 @@
                                         @can('Absensi.Data')
                                         <a href="{{ route('admin.absensi.data',$meeting->id) }}" class="btn btn-sm btn-secondary badge  mx-1" wire:navigate><i class="fe fe-eye"></i></a>
                                         @endcan
-                                        <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash"></i></a>
+                                        <a onclick="deleteid(this)" id="{{$meeting->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-deskripsi="Hapus sesi absent '{{$meeting->title}}' di event '{{$event->name_event}}'?"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
