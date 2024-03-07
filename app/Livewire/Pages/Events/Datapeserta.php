@@ -108,7 +108,7 @@ class Datapeserta extends Component
         ];
 
         // Export data ke dalam file Excel
-        return Excel::download(new TemplateExport($data, 'template'), 'template_excel.xlsx');
+        return Excel::download(new TemplateExport($data), 'Template Daftar Kepanitiaan.xlsx');
     }
     public function saveExcel()
     {

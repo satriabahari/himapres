@@ -68,7 +68,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title">Import Excel</h4>
-                    <a href="" wire:click="getTemplateExcel()" id=" table2-new-row-button" class="btn btn-primary btn-sm">Template</a>
+                    <a wire:click="getTemplateExcel()" id=" table2-new-row-button" class="btn btn-primary btn-sm">Template</a>
                 </div>
                 <div class="card-body">
                     <form wire:submit='saveExcel' enctype="multipart/form-data">
