@@ -106,14 +106,17 @@ class Createmhs extends Component
     }
     public function getTemplateExcel()
     {
-        $sheet1 = ['nim', 'card_id', 'name', 'jabatan'];
+        $sheet1 = [['nim', 'card_id', 'name', 'jabatan']];
         $sheet2 = [
             ['Ketentuan'],
             ['1. jabatan beupa [Mahasiswa, Dosen, Tamu]'],
             ['2. card_id diisi dengan id kartu NFT']
         ];
-        $data = [$sheet1, $sheet2];
+        $data = [
+            'inputan' => $sheet1,
+            'ketentuan' => $sheet2
+        ];
         // Export data ke dalam file Excel
-        return Excel::download(new TemplateExport($data, 'template'), 'template_excel.xlsx');
+        return Excel::download(new TemplateExport($data), 'Template Daftar Keanggotaan.xlsx');
     }
 }
