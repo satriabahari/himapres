@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title w-100">Reader Scan</h3>
-                    <a href="" onclick=" html5QrcodeScanner.render(onScanSuccess, onScanFailure)"><i class="fa fa-rotate-right" style="font-size: 18px;"></i></a>
+                    <a onclick=" html5QrcodeScanner.render(onScanSuccess, onScanFailure)"><i class="fa fa-rotate-right" style="font-size: 18px;"></i></a>
                 </div>
                 <div class="card-body text-center">
                     <div class="container">
