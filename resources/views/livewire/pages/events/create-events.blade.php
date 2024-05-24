@@ -5,6 +5,7 @@
 
     <x-slot name='breadcrumb'>
         <livewire:components.widget.breadcrumb breadcrumb="{{ __($breadcrumb) }}"/>
+
     </x-slot>
 
     <div class="row">

@@ -41,6 +41,9 @@
                                     <td>{{ $meeting->time_start }}</td>
                                     <td>{{ $meeting->time_end }}</td>
                                     <td class="d-flex justify-content-center border-0">
+                                        {{-- @can('Absensi.QRCODE') --}}
+                                        {{-- <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-camera"></i></a>
+                                        @endcan --}}
                                         @can('Absensi.Scan-RFID')
                                         <a href="{{ route('admin.absensi.scan-rfid',$meeting->id) }}" class="btn btn-sm btn-primary badge  mx-1" wire:navigate><i class="fe fe-arrow-up"></i></a>
                                         @endcan

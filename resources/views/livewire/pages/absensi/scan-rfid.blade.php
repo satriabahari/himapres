@@ -9,12 +9,12 @@
 
     <!-- Row -->
     <div class="row">
+        @can('Absensi.Scan-RFID')
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Reader Scan</h3>
                 </div>
-
                 <div class="card-body text-center">
                     <h3 class="text-center">Tempelkan Kartu Anda </br> Pada Reader</h3>
                     <div>
@@ -35,6 +35,8 @@
                 </div>
             </div>
         </div>
+        @endcan
+        {{-- @can("Absensi.QRcode") --}}
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
@@ -49,6 +51,7 @@
             </div>
             <a type="button" class="d-none" id="btnScanQr"> scan</a>
         </div>
+        {{-- @endcan --}}
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">

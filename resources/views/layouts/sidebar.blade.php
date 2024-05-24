@@ -3,7 +3,7 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="index.html">
+            <a class="header-brand1" href="/">
                 <img src="../assets/images/brand/logo-white.png" class="header-brand-img desktop-logo" alt="logo">
                 <img src="../assets/images/brand/icon-white.png" class="header-brand-img toggle-logo"
                     alt="logo">
@@ -103,7 +103,7 @@
                         </li>
                     </ul>
                 </li>
-               
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}

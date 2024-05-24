@@ -1,15 +1,18 @@
 <div>
-    <x-slot name='title'>
-        {{ __($title)}}
-    </x-slot>
 
     <x-slot name='breadcrumb'>
         <livewire:components.widget.breadcrumb breadcrumb="{{ __($breadcrumb) }}" />
     </x-slot>
 
+    <x-slot name='title'>
+        {{ __($title)}}
+    </x-slot>
+
+
     <div class="row">
         <div class="col-md-12 col-xl-12">
             <div class="card">
+
                 <div class="card-body d-flex justify-content-between">
                     <table class="mr-6 w-sm-100">
                         <tr>

@@ -4,7 +4,7 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <div class="app-sidebar">
             <div class="side-header">
-                <a class="header-brand1" href="index.html">
+                <a class="header-brand1" href="/">
                     <img src="{{ asset('assets/images/hima/HIMASII.png') }}" class="header-brand-img desktop-logo" alt="logo" style="width: 150px;">
                     <img src="{{ asset('assets/images/hima/si.jpeg') }}" class="header-brand-img toggle-logo rounded-circle" alt="logo">
                     <img src="{{ asset('assets/images/hima/si.jpeg') }}" class="header-brand-img light-logo" alt="logo">
@@ -23,19 +23,19 @@
                         <h3>Main</h3>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('dashboard') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
+                        <a wire:navigate class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('dashboard') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
                     </li>
                     <li class="sub-category">
                         <h3>Presensi</h3>
                     </li>
                     @can('Absensi.List')
                     <li class="slide">
-                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.absensi.index') }}"><i class="side-menu__icon fa fa-qrcode"></i><span class="side-menu__label">Absensi</span></a>
+                        <a wire:navigate class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.absensi.index') }}"><i class="side-menu__icon fa fa-qrcode"></i><span class="side-menu__label">Absensi</span></a>
                     </li>
                     @endcan
                     @can('Event.List')
                     <li class="slide">
-                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.events.index') }}"><i class="side-menu__icon fa fa-calendar"></i><span class="side-menu__label">Data Event</span></a>
+                        <a wire:navigate class="side-menu__item has-link" data-bs-toggle="slide" href="{{ route('admin.events.index') }}"><i class="side-menu__icon fa fa-calendar"></i><span class="side-menu__label">Data Event</span></a>
                     </li>
                     @endcan
 
@@ -54,13 +54,13 @@
                                             <ul class="sidemenu-list">
                                                 <li class="side-menu-label1"><a href="javascript:void(0)">apps</a></li>
                                                 @can('Posisi.List')
-                                                    <li><a href="{{ route('admin.posisi.index') }}" class="slide-item">Data Posisi Event</a></li>
+                                                    <li><a wire:navigate href="{{ route('admin.posisi.index') }}" class="slide-item">Data Posisi Event</a></li>
                                                 @endcan
                                                 @can('Mahasiswa.List')
-                                                    <li><a href="{{ route('admin.mahasiswa.index') }}" class="slide-item">Data Anggota</a></li>
+                                                    <li><a wire:navigate href="{{ route('admin.mahasiswa.index') }}" class="slide-item">Data Anggota</a></li>
                                                 @endcan
                                                 @role('super-admin')
-                                                <li><a href="{{ route('admin.users.index') }}" class="slide-item">User</a></li>
+                                                <li><a wire:navigate href="{{ route('admin.users.index') }}" class="slide-item">User</a></li>
                                                 @endrole
                                             </ul>
                                         </div>
@@ -106,9 +106,9 @@
                                         <div class="tab-pane active" id="side1">
                                             <ul class="sidemenu-list">
                                                 <li class="side-menu-label1"><a href="javascript:void(0)">apps</a></li>
-                                                <li><a href="{{ route('admin.roles.index') }}" class="slide-item">
+                                                <li><a wire:navigate href="{{ route('admin.roles.index') }}" class="slide-item">
                                                         Roles</a></li>
-                                                <li><a href="{{ route('admin.permissions.index') }}" class="slide-item">
+                                                <li><a wire:navigate  href="{{ route('admin.permissions.index') }}" class="slide-item">
                                                         Permissions</a></li>
                                             </ul>
                                         </div>
