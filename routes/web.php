@@ -112,5 +112,4 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index')->middleware('permission:Mahasiswa.List');
     Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create')->middleware('permission:Mahasiswa.Create');
     Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit')->middleware('permission:Mahasiswa.Edit');
-
 });
