@@ -16,7 +16,7 @@ return new class extends Migration
             $table->String('absensi_id')->constrained('absensi')->cascadeOnDelete();
             $table->String('peserta_id')->constrained('peserta_event')->cascadeOnDelete();
             $table->String('keterangan');
-            $table->string('status');
+            $table->string('status');  // 1.hadir, 2.izin, 3.alpa
             $table->timestamps();
         });
     }
