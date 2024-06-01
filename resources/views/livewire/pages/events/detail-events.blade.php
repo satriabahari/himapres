@@ -38,6 +38,7 @@
                     </table>
                     <div>
                         <a href="{{ route('admin.events.edit',$idEvent) }}" id="table2-new-row-button" class="btn btn-primary btn-sm" wire:navigate>Edit Detail</a>
+                        <a wire:click="downloadDetailEvent()" id="table2-new-row-button" class="btn btn-primary btn-sm">Download</a>
                     </div>
                 </div>
             </div>
@@ -62,6 +63,21 @@
                         @foreach ($dataDivisi as $divisi )
                         <tr>
                             <td id="{{ $divisi->id }}" wire:click="getAnggota('{{ $divisi->id }}')"> {{$divisi->name}}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Daftar Abenst</h4>
+                        <!-- <a id="table2-new-row-button" class="btn btn-primary btn-sm" href="" wire:navigate>Add</a> -->
+                    </div>
+                    <table class="table tomboltd">
+                        @foreach ($dataAbsent as $absent )
+                        <tr>
+                            <td id="{{ $absent->id }}" wire:click="navigateTo('{{ route('admin.absensi.data',$absent->id) }}')"> {{$absent->title}}</td>
                         </tr>
                         @endforeach
                     </table>
