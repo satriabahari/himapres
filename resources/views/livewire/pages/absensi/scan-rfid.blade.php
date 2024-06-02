@@ -94,27 +94,6 @@
     </style>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
-        const btnqrscan = document.getElementById('btnScanQr');
-
-        function onScanSuccess(decodedText, decodedResult) {
-            console.log(decodedText);
-            btnqrscan.setAttribute('wire:click', "scanqr('" + decodedText + "')");
-            btnqrscan.click();
-        }
-
-        function onScanFailure(error) {}
-
-        let html5QrcodeScanner = new Html5QrcodeScanner(
-            "reader", {
-                fps: 10,
-                qrbox: {
-                    width: 250,
-                    height: 250
-                }
-            },
-            false
-        );
-        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
         const scannft = document.getElementById('cardId');
         setInterval(function() {
             scannft.focus();
