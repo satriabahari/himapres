@@ -28,6 +28,7 @@ use App\Livewire\Pages\Absensi\CreateAbsensi;
 use App\Livewire\Pages\Absensi\EventsAbsensi;
 use App\Http\Controllers\PermissionsController;
 use App\Livewire\Pages\Absensi\EditDetailAbsensi;
+use App\Livewire\Pages\Absensi\ScanQr;
 use App\Livewire\Pages\Events\DetailEvents;
 use App\Livewire\Pages\Permissions\EditPermission;
 use App\Livewire\Pages\Permissions\ListPermissions;
@@ -103,7 +104,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::get('/absensi/event/create/{id}', CreateAbsensi::class)->name('absensi.event.create')->middleware('permission:Absensi.Create');
     Route::get('/absensi/event/edit/{id}', EditDetailAbsensi::class)->name('absensi.event.edit')->middleware('permission:Absensi.Edit');
     Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data')->middleware('permission:Absensi.Data');
-    Route::get('/absensi/event/scan/{id}', ScanRfid::class)->name('absensi.scan-rfid')->middleware('permission:Absensi.Scan-RFID');
+    Route::get('/absensi/event/scan/rfid/{id}', ScanRfid::class)->name('absensi.scan-rfid')->middleware('permission:Absensi.Scan-RFID');
+    // Route::get('/absensi/event/scan/qrcode/{id}', ScanQr::class)->name('absensi.scan-qrcode')->middleware('permission:Absensi.Scan-QRCode');
+    Route::get('/absensi/event/scan/qrcode/{id}', ScanQr::class)->name('absensi.scan-qrcode')->middleware('permission:Absensi.Scan-RFID');
 
     Route::get('/posisi', Listposisi::class)->name('posisi.index')->middleware('permission:Posisi.List');
     Route::get('/posisi/create', Createposisi::class)->name('posisi.create')->middleware('permission:Posisi.Create');

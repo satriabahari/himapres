@@ -46,11 +46,17 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title w-100">Rekap Absent</h3>
-                    <button wire:click="refreshAbsent('{{ $id }}')" class="btn btn-secondary btn-sm pe-4 me-3">Refresh</button>
+                    <h3 class="card-title me-auto">Rekap Absent</h3>
+                    <button wire:click="refreshAbsent('{{ $id }}')" class="btn btn-secondary btn-sm ms-2">Refresh</button>
+
                     @can('Absensi.Scan-RFID')
-                    <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm pe-4" wire:navigate>Up Absent</a>
+                    <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>Scan RFID</a>
                     @endcan
+
+                    @can('Absensi.Scan-QRCode')
+                    <a href="{{ route('admin.absensi.scan-qrcode',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>Scan QRCode</a>
+                    @endcan
+
                 </div>
 
                 <div class="card-body">
