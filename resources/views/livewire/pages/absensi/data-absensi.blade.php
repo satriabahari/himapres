@@ -50,12 +50,17 @@
                     <button wire:click="refreshAbsent('{{ $id }}')" class="btn btn-secondary btn-sm ms-2">Refresh</button>
 
                     @can('Absensi.Scan-RFID')
+                    <a href="{{ route('admin.absensi.scan-manual',$id) }}" class="btn btn-warning btn-sm ms-2" wire:navigate>Manual</a>
+                    @endcan
+
+                    @can('Absensi.Scan-RFID')
                     <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>Scan RFID</a>
                     @endcan
 
-                    @can('Absensi.Scan-QRCode')
-                    <a href="{{ route('admin.absensi.scan-qrcode',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>Scan QRCode</a>
+                    @can('Absensi.Scan-QR')
+                    <a href="{{ route('admin.absensi.scan-qr',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>Scan QRCode</a>
                     @endcan
+
 
                 </div>
 

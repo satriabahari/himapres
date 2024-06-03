@@ -41,8 +41,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title me-auto">Detail Kehadiran</h3>
-                    @can('Absensi.Scan-QRCode')
-                    <a href="{{ route('admin.absensi.scan-qrcode',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>QRCode</a>
+                    @can('Absensi.Scan-QR')
+                    <a href="{{ route('admin.absensi.scan-qr',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>QRCode</a>
                     @endcan
                 </div>
 

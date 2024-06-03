@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Dashboard;
 
 use App\Models\ModelMhs;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Dashboard extends Component

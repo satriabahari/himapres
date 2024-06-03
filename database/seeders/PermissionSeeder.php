@@ -31,7 +31,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Absensi.Edit']);
         Permission::create(['name' => 'Absensi.Data']);
         Permission::create(['name' => 'Absensi.Scan-RFID']);
-        Permission::create(['name' => 'Absensi.Scan-QRCode']);
+        Permission::create(['name' => 'Absensi.Scan-QR']);
+        Permission::create(['name' => 'Absensi.Scan-Manual']);
 
         Permission::create(['name' => 'Posisi.List']);
         Permission::create(['name' => 'Posisi.Create']);
