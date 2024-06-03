@@ -60,8 +60,6 @@
                     @can('Absensi.Scan-RFID')
                     <a href="{{ route('admin.absensi.scan-qr',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>Scan QRCode</a>
                     @endcan
-
-
                 </div>
 
                 <div class="card-body">

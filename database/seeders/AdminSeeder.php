@@ -29,5 +29,12 @@ class AdminSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('password') // password
         ])->assignRole('sekretaris');
+
+        User::create([
+            'name' => 'sekretaris1',
+            'email' => 'sekretaris1@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password') // password
+        ])->assignRole('sekretaris');
     }
 }
