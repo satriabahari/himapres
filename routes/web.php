@@ -64,7 +64,7 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data')->middleware('permission:Absensi.Data');
     Route::get('/absensi/event/scan/rfid/{id}', ScanRfid::class)->name('absensi.scan-rfid')->middleware('permission:Absensi.Scan-RFID');
     Route::get('/absensi/event/scan/qr/{id}', ScanQr::class)->name('absensi.scan-qr')->middleware('permission:Absensi.Scan-QR');
-    Route::get('/absensi/event/scan/manual/{id}', ScanManual::class)->name('absensi.scan-manual')->middleware('permission:Absensi.Scan-RFID');
+    Route::get('/absensi/event/scan/manual/{id}', ScanManual::class)->name('absensi.scan-manual')->middleware('permission:Absensi.Scan-Manual');
     // Route::get('/absensi/event/scan/qr/{id}', ScanQr::class)->name('absensi.scan-qr')->middleware('permission:Absensi.Scan-RFID');
 
     Route::get('/posisi', Listposisi::class)->name('posisi.index')->middleware('permission:Posisi.List');
