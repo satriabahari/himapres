@@ -9,7 +9,7 @@
 
     <!-- Row -->
     <div class="row">
-        @can('Absensi.Scan-QR')
+        @can('Absensi.ScanQR')
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
