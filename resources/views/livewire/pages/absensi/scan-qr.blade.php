@@ -89,9 +89,17 @@
             console.log(decodedText);
             btnqrscan.setAttribute('wire:click', "scanqr('" + decodedText + "')");
             btnqrscan.click();
+
+            // Menjaga kamera tetap terbuka setelah pemindaian berhasil
+            html5QrcodeScanner.pause();
+            setTimeout(() => {
+                html5QrcodeScanner.resume();
+            }, 2000); // Sesuaikan penundaan sesuai kebutuhan
         }
 
-        function onScanFailure(error) {}
+        function onScanFailure(error) {
+            // Menangani kegagalan pemindaian, jika diperlukan
+        }
 
         let html5QrcodeScanner = new Html5QrcodeScanner(
             "reader", {
@@ -103,6 +111,8 @@
             },
             false
         );
+
         html5QrcodeScanner.render(onScanSuccess, onScanFailure);
     </script>
+
 </div>
