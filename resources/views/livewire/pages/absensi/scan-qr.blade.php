@@ -94,11 +94,10 @@
                 btnqrscan.click();
             }, 0); // Sesuaikan penundaan sesuai kebutuhan, 0 berarti segera
 
-            // Menjaga kamera tetap terbuka setelah pemindaian berhasil
-            html5QrcodeScanner.pause();
+            // Refresh halaman saat ini setelah pemindaian berhasil
             setTimeout(() => {
-                html5QrcodeScanner.resume();
-            }, 2000); // Sesuaikan penundaan sesuai kebutuhan
+                window.location.reload();
+            }, 2100);
         }
 
         function onScanFailure(error) {}
