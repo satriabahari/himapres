@@ -18,6 +18,7 @@ class PermissionSeeder extends Seeder
     {
         Permission::create(['name' => 'Data.Master']);
         Permission::create(['name' => 'Manage.Access']);
+        Permission::create(['name' => 'Data.users']);
 
         Permission::create(['name' => 'Event.List']);
         Permission::create(['name' => 'Event.Create']);
@@ -31,6 +32,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Absensi.Edit']);
         Permission::create(['name' => 'Absensi.Data']);
         Permission::create(['name' => 'Absensi.Scan-RFID']);
+        Permission::create(['name' => 'Absensi.Scan-QR']);
+        Permission::create(['name' => 'Absensi.Scan-Manual']);
 
         Permission::create(['name' => 'Posisi.List']);
         Permission::create(['name' => 'Posisi.Create']);
@@ -39,8 +42,6 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Mahasiswa.List']);
         Permission::create(['name' => 'Mahasiswa.Create']);
         Permission::create(['name' => 'Mahasiswa.Edit']);
-
-        Permission::create(['name' => 'Data.users']);
 
         Permission::create(['name' => 'Data.divisi']);
         Permission::create(['name' => 'Data.keanggotaan']);

@@ -6,10 +6,8 @@ use App\Livewire\Pages\Roles\EditRoles;
 use App\Livewire\Pages\Roles\ListRoles;
 use App\Livewire\Pages\Users\EditUsers;
 use App\Livewire\Pages\Users\ListUsers;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Pages\Absensi\ScanRfid;
-use App\Http\Controllers\RolesController;
 use App\Livewire\Pages\Events\EditEvents;
 use App\Livewire\Pages\Events\ListEvents;
 use App\Livewire\Pages\Mahasiswa\Editmhs;
@@ -26,8 +24,9 @@ use App\Livewire\Pages\Mahasiswa\Createmhs;
 use App\Livewire\Pages\Posisi\Createposisi;
 use App\Livewire\Pages\Absensi\CreateAbsensi;
 use App\Livewire\Pages\Absensi\EventsAbsensi;
-use App\Http\Controllers\PermissionsController;
 use App\Livewire\Pages\Absensi\EditDetailAbsensi;
+use App\Livewire\Pages\Absensi\ScanManual;
+use App\Livewire\Pages\Absensi\ScanQr;
 use App\Livewire\Pages\Events\DetailEvents;
 use App\Livewire\Pages\Permissions\EditPermission;
 use App\Livewire\Pages\Permissions\ListPermissions;
@@ -49,47 +48,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
-
-Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')->group(function () {
-    Route::get('/roles', ListRoles::class)->name('roles.index');
-    Route::get('/roles/create', CreateRoles::class)->name('roles.create');
-    Route::get('/roles/edit/{id}', EditRoles::class)->name('roles.edit');
-
-    Route::get('/permissions', ListPermissions::class)->name('permissions.index');
-    Route::get('/permissions/create', CreatePermission::class)->name('permissions.create');
-    Route::get('/permissions/edit/{id}', EditPermission::class)->name('permissions.edit');
-
-    Route::get('/users', ListUsers::class)->name('users.index');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::get('/users/{id}', EditUsers::class)->name('users.show');
-    Route::post('/users/{user}/roles', [EditUsers::class, 'assignRole'])->name('users.roles');
-
-    Route::get('/events', ListEvents::class)->name('events.index');
-    Route::get('/events/create', CreateEvents::class)->name('events.create');
-    Route::get('/events/detail/{id}', DetailEvents::class)->name('events.detail');
-    Route::get('/events/edit/{id}', EditEvents::class)->name('events.edit');
-    Route::get('/events/create-peserta/{id}', Datapeserta::class)->name('events.peserta');
-
-    Route::get('/absensi', ListAbsensi::class)->name('absensi.index');
-    Route::get('/absensi/event/{id}', EventsAbsensi::class)->name('absensi.event');
-    Route::get('/absensi/event/create/{id}', CreateAbsensi::class)->name('absensi.event.create');
-    Route::get('/absensi/event/edit/{id}', EditDetailAbsensi::class)->name('absensi.event.edit');
-    Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data');
-    Route::get('/absensi/event/scan/{id}', ScanRfid::class)->name('absensi.scan-rfid');
-
-
-    Route::get('/posisi', Listposisi::class)->name('posisi.index');
-    Route::get('/posisi/create', Createposisi::class)->name('posisi.create');
-    Route::get('/posisi/edit/{id}', Editposisi::class)->name('posisi.edit');
-
-    Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index');
-    Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create');
-    Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit');
-});
-
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/events', ListEvents::class)->name('events.index')->middleware('permission:Event.List');;
@@ -103,7 +62,10 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::get('/absensi/event/create/{id}', CreateAbsensi::class)->name('absensi.event.create')->middleware('permission:Absensi.Create');
     Route::get('/absensi/event/edit/{id}', EditDetailAbsensi::class)->name('absensi.event.edit')->middleware('permission:Absensi.Edit');
     Route::get('/absensi/event/data/{id}', DataAbsensi::class)->name('absensi.data')->middleware('permission:Absensi.Data');
-    Route::get('/absensi/event/scan/{id}', ScanRfid::class)->name('absensi.scan-rfid')->middleware('permission:Absensi.Scan-RFID');
+    Route::get('/absensi/event/scan/rfid/{id}', ScanRfid::class)->name('absensi.scan-rfid')->middleware('permission:Absensi.Scan-RFID');
+    Route::get('/absensi/event/scan/qr/{id}', ScanQr::class)->name('absensi.scan-qr')->middleware('permission:Absensi.Scan-QR');
+    Route::get('/absensi/event/scan/manual/{id}', ScanManual::class)->name('absensi.scan-manual')->middleware('permission:Absensi.Scan-Manual');
+    // Route::get('/absensi/event/scan/qr/{id}', ScanQr::class)->name('absensi.scan-qr')->middleware('permission:Absensi.Scan-RFID');
 
     Route::get('/posisi', Listposisi::class)->name('posisi.index')->middleware('permission:Posisi.List');
     Route::get('/posisi/create', Createposisi::class)->name('posisi.create')->middleware('permission:Posisi.Create');
@@ -112,4 +74,24 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index')->middleware('permission:Mahasiswa.List');
     Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create')->middleware('permission:Mahasiswa.Create');
     Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit')->middleware('permission:Mahasiswa.Edit');
+
+    Route::get('/posisi', Listposisi::class)->name('posisi.index');
+    Route::get('/posisi/create', Createposisi::class)->name('posisi.create');
+    Route::get('/posisi/edit/{id}', Editposisi::class)->name('posisi.edit');
+});
+
+// ==================================================================================================
+// khusus Super Admin
+Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/roles', ListRoles::class)->name('roles.index');
+    Route::get('/roles/create', CreateRoles::class)->name('roles.create');
+    Route::get('/roles/edit/{id}', EditRoles::class)->name('roles.edit');
+
+    Route::get('/permissions', ListPermissions::class)->name('permissions.index');
+    Route::get('/permissions/create', CreatePermission::class)->name('permissions.create');
+    Route::get('/permissions/edit/{id}', EditPermission::class)->name('permissions.edit');
+
+    Route::get('/users', ListUsers::class)->name('users.index');
+    Route::get('/users/{id}', EditUsers::class)->name('users.show');
+    Route::post('/users/{user}/roles', [EditUsers::class, 'assignRole'])->name('users.roles');
 });

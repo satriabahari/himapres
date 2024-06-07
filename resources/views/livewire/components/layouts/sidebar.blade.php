@@ -4,7 +4,7 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <div class="app-sidebar">
             <div class="side-header">
-                <a class="header-brand1" href="/">
+                <a class="header-brand1">
                     <img src="{{ asset('assets/images/hima/HIMASII.png') }}" class="header-brand-img desktop-logo" alt="logo" style="width: 150px;">
                     <img src="{{ asset('assets/images/hima/si.jpeg') }}" class="header-brand-img toggle-logo rounded-circle" alt="logo">
                     <img src="{{ asset('assets/images/hima/si.jpeg') }}" class="header-brand-img light-logo" alt="logo">
@@ -54,10 +54,10 @@
                                             <ul class="sidemenu-list">
                                                 <li class="side-menu-label1"><a href="javascript:void(0)">apps</a></li>
                                                 @can('Posisi.List')
-                                                    <li><a wire:navigate href="{{ route('admin.posisi.index') }}" class="slide-item">Data Posisi Event</a></li>
+                                                <li><a wire:navigate href="{{ route('admin.posisi.index') }}" class="slide-item">Data Posisi Event</a></li>
                                                 @endcan
                                                 @can('Mahasiswa.List')
-                                                    <li><a wire:navigate href="{{ route('admin.mahasiswa.index') }}" class="slide-item">Data Anggota</a></li>
+                                                <li><a wire:navigate href="{{ route('admin.mahasiswa.index') }}" class="slide-item">Data Anggota</a></li>
                                                 @endcan
                                                 @role('super-admin')
                                                 <li><a wire:navigate href="{{ route('admin.users.index') }}" class="slide-item">User</a></li>
@@ -108,7 +108,7 @@
                                                 <li class="side-menu-label1"><a href="javascript:void(0)">apps</a></li>
                                                 <li><a wire:navigate href="{{ route('admin.roles.index') }}" class="slide-item">
                                                         Roles</a></li>
-                                                <li><a wire:navigate  href="{{ route('admin.permissions.index') }}" class="slide-item">
+                                                <li><a wire:navigate href="{{ route('admin.permissions.index') }}" class="slide-item">
                                                         Permissions</a></li>
                                             </ul>
                                         </div>

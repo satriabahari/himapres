@@ -9,40 +9,29 @@
 
     <!-- Row -->
     <div class="row">
-        @can('Absensi.Scan-RFID')
+        @can('Absensi.Scan-QR')
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Reader Scan</h3>
+                    <h3 class="card-title w-100">Reader Scan</h3>
+                    <a onclick=" html5QrcodeScanner.render(onScanSuccess, onScanFailure)"><i class="fa fa-rotate-right" style="font-size: 18px;"></i></a>
                 </div>
                 <div class="card-body text-center">
-                    <h3 class="text-center">Tempelkan Kartu Anda </br> Pada Reader</h3>
-                    <div>
-                    </div>
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <form wire:submit.prevent="scanIdCard">
-                                    <input type="password" class="form-control  mx-auto" id="cardId" wire:model="cardId" autofocus>
-                                    <!-- Tombol submit form -->
-                                    <button type="submit" class="btn btn-primary mt-3">Hadir</button>
-                                </form>
-                            </div>
-                        </div>
+                        <div id="reader" width="600px"></div>
                     </div>
-                    {{ $cardId }}
-
                 </div>
             </div>
+            <a type="button" class="d-none" id="btnScanQr"> scan</a>
         </div>
         @endcan
-
+        {{-- @endcan --}}
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title me-auto">Detail Kehadiran</h3>
-                    @can('Absensi.Scan-QR')
-                    <a href="{{ route('admin.absensi.scan-qr',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>QRCode</a>
+                    @can('Absensi.Scan-RFID')
+                    <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm ms-2" wire:navigate>RFID</a>
                     @endcan
                 </div>
 
@@ -94,9 +83,26 @@
     </style>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
-        const scannft = document.getElementById('cardId');
-        setInterval(function() {
-            scannft.focus();
-        }, 100);
+        const btnqrscan = document.getElementById('btnScanQr');
+
+        function onScanSuccess(decodedText, decodedResult) {
+            console.log(decodedText);
+            btnqrscan.setAttribute('wire:click', "scanqr('" + decodedText + "')");
+            btnqrscan.click();
+        }
+
+        function onScanFailure(error) {}
+
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", {
+                fps: 10,
+                qrbox: {
+                    width: 250,
+                    height: 250
+                }
+            },
+            false
+        );
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
     </script>
 </div>

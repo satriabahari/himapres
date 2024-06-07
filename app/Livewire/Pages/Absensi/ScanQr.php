@@ -9,7 +9,7 @@ use App\Models\ModelDataKehadiran;
 use App\Models\ModelPesertaEvent;
 use Carbon\Carbon;
 
-class ScanRfid extends Component
+class ScanQr extends Component
 {
     public $breadcrumb = "Scan Absensi";
     public $title = "Scan Absensi";
@@ -20,22 +20,19 @@ class ScanRfid extends Component
     public $dataAbsent;
     public $id;
     public $pesan_err = null;
-
     public function mount($id)
     {
         $this->id = $id;
         $this->currentDate = Carbon::now()->toDateString();
         $this->currentTime = Carbon::now()->toTimeString();
     }
-
-
-    public function scanIdCard()
+    public function scanqr($qrcode)
     {
-        $dataAnggota = ModelMhs::where('card_id', $this->cardId)
-            ->first(); // id anggota
+        $dataAnggota = ModelMhs::where('qrcode', $qrcode)
+            ->first();
+        $this->pesan_err = 'absen jalan ditemukan';
         $this->dataAnggota = $dataAnggota;
         $this->saveabsent($dataAnggota);
-        $this->reset(['cardId']);
     }
 
     public function saveabsent($dataAnggota)
@@ -89,9 +86,8 @@ class ScanRfid extends Component
             $this->pesan_err = 'Keanggotaan anda tidak ditemukan';
         }
     }
-
     public function render()
     {
-        return view('livewire.pages.absensi.scan-rfid');
+        return view('livewire.pages.absensi.scan-qr');
     }
 }

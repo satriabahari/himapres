@@ -24,6 +24,8 @@ class RoleSeeder extends Seeder
             'Absensi.Show',
             'Absensi.Data',
             'Absensi.Scan-RFID',
+            'Absensi.Scan-QR',
+            'Absensi.Scan-Manual',
             'Event.List',
             'Event.Create',
             'Event.Show',
@@ -38,7 +40,8 @@ class RoleSeeder extends Seeder
             'Data.users',
             'Data.divisi',
             'Data.keanggotaan',
-            'Data.rekap');
+            'Data.rekap'
+        );
         Role::create(['name' => 'sekretaris'])->givePermissionTo(
             'Absensi.List',
             'Absensi.Create',
@@ -46,6 +49,8 @@ class RoleSeeder extends Seeder
             'Absensi.Show',
             'Absensi.Data',
             'Absensi.Scan-RFID',
+            'Absensi.Scan-QR',
+            'Absensi.Scan-Manual',
             'Event.List',
             'Event.Create',
             'Event.Show',
@@ -59,6 +64,7 @@ class RoleSeeder extends Seeder
             'Mahasiswa.Edit',
             'Data.divisi',
             'Data.keanggotaan',
-            'Data.rekap');
+            'Data.rekap'
+        );
     }
 }
