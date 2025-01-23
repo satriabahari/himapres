@@ -108,12 +108,12 @@
 
     <script>
         // Menampilkan UID di konsol ketika RFID reader mendeteksi input
-        document.getElementById('cardId').addEventListener('input', function() {
-            if (this.value.length >= 10) { // Sesuaikan panjang UID RFID Anda
-                console.log('UID Terdeteksi:', this.value); // Menampilkan UID di konsol
-                // this.value = ''; // Reset input setelah UID ditampilkan
-                // @this.scanIdCard();
-            }
-        });
+        // document.getElementById('cardId').addEventListener('input', function() {
+        //     if (this.value.length >= 10) { // Sesuaikan panjang UID RFID Anda
+        //         console.log('UID Terdeteksi:', this.value); // Menampilkan UID di konsol
+        //         // this.value = ''; // Reset input setelah UID ditampilkan
+        //         // @this.scanIdCard();
+        //     }
+        // });
     </script>
 </div>
