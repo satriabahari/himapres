@@ -7,6 +7,7 @@ use App\Livewire\Pages\Roles\ListRoles;
 use App\Livewire\Pages\Users\EditUsers;
 use App\Livewire\Pages\Users\ListUsers;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Help\Rekap;
 use App\Livewire\Pages\Absensi\ScanRfid;
 use App\Livewire\Pages\Events\EditEvents;
 use App\Livewire\Pages\Events\ListEvents;
@@ -94,4 +95,11 @@ Route::middleware(['auth', 'role:super-admin'])->name('admin.')->prefix('admin')
     Route::get('/users', ListUsers::class)->name('users.index');
     Route::get('/users/{id}', EditUsers::class)->name('users.show');
     Route::post('/users/{user}/roles', [EditUsers::class, 'assignRole'])->name('users.roles');
+});
+
+
+
+Route::group(['prefix' => "test"], function() {
+    Route::get('/', [Rekap::class, 'index']);
+    Route::get('/nim/{nim}', [Rekap::class, 'byNim']);
 });
