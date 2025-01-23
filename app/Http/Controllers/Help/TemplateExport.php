@@ -8,43 +8,43 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class TemplateExport implements WithMultipleSheets
 {
-   protected $data;
+    protected $data;
 
-   public function __construct(array $data)
-   {
-      $this->data = $data;
-   }
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
 
-   public function sheets(): array
-   {
-      $sheets = [];
+    public function sheets(): array
+    {
+        $sheets = [];
 
-      foreach ($this->data as $sheetName => $sheetData) {
-         $sheets[] = new MySheet($sheetName, $sheetData);
-      }
+        foreach ($this->data as $sheetName => $sheetData) {
+            $sheets[] = new MySheet($sheetName, $sheetData);
+        }
 
-      return $sheets;
-   }
+        return $sheets;
+    }
 }
 
 class MySheet implements FromArray
 {
-   protected $sheetName;
-   protected $data;
+    protected $sheetName;
+    protected $data;
 
-   public function __construct(string $sheetName, array $data)
-   {
-      $this->sheetName = $sheetName;
-      $this->data = $data;
-   }
+    public function __construct(string $sheetName, array $data)
+    {
+        $this->sheetName = $sheetName;
+        $this->data = $data;
+    }
 
-   public function array(): array
-   {
-      return $this->data;
-   }
+    public function array(): array
+    {
+        return $this->data;
+    }
 
-   public function title(): string
-   {
-      return $this->sheetName;
-   }
+    public function title(): string
+    {
+        return $this->sheetName;
+    }
 }
