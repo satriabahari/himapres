@@ -119,16 +119,15 @@ class DetailEvents extends Component
         // Buat array untuk data Excel
         $data = array_merge(
             [
-                'Data Kepanitiaan' => $sheet1,
-                'Data Absent' => $sheet2,
+                'Data Kepanitiaan' => $sheet1, // Sheet named "Data Kepanitiaan"
+                'Data Absent' => $sheet2,     // Sheet named "Data Absent"
             ],
-            $sheetAbsent
+            $sheetAbsent // Sheets named after absent titles (e.g., "Event 1", "Event 2")
         );
 
-        // masukkan $sheetAbsent ke dalam $data
+        // Export to Excel
+        return Excel::download(new TemplateExport($data), "Data Panitia " . $this->dataEvent->name_event . ".xlsx");
 
-        // Export data ke dalam file Excel
-        return Excel::download(new TemplateExport($data), 'Detail Kepanitiaan.xlsx');
     }
 
     public function navigateTo($link)
