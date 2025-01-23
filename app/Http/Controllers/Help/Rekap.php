@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\ModelMhs;
 use App\Models\ModelEvents;
 use App\Models\ModelPesertaEvent;
+use App\Http\Controllers\Help\TemplateExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Rekap extends Controller
 {
@@ -59,15 +61,26 @@ class Rekap extends Controller
         foreach ($event as $ev) {
             echo $ev . '<br>';
         }
+
+        $this->download($nim);
     }
 
     public function download($nim)
     {
+        $mhs = $this->getMahasiswa($nim);
         $sheet1 = $this->getAcara($nim)->map(function ($item, $i) {
-            return [$i + 1, $item['name_event'], $item];
-        });
+            return [$i + 1, $item['title'], $item['name_event'],$item['position_name'], $item['detail'],$item['date_start'], $item['date_end'], $item['waktu'], $item['status']];
+        })->toArray();
 
+        array_unshift($sheet1, ['No', 'Absenis', 'Acara', 'Posisi', 'Detail', 'Tanggal Mulai', 'Tanggal Selesai', 'Waktu', 'Kehadiran']);
+
+        $data = array_merge(
+            [
+                "Rekap Absen ".$mhs->name => $sheet1]
+        );
         // Export to Excel
-        return Excel::download(new TemplateExport($data), 'Data Panitia ' . $this->dataEvent->name_event . '.xlsx');
+
+        // dd($data);
+        return Excel::download(new TemplateExport($data), "Rekap Absen ".$mhs->name . '.xlsx');
     }
 }
