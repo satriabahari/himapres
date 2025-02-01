@@ -42,6 +42,7 @@ class ScanManual extends Component
         // $this->pesan_err = 'Absen jalan ditemukan';
         $this->dataAnggota = $dataAnggota;
         $this->saveabsent($dataAnggota);
+        return redirect()->back();
     }
 
     public function saveabsent($dataAnggota)

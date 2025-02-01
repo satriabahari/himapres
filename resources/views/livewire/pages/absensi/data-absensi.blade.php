@@ -14,19 +14,19 @@
                 <div class="card-header">
                     <h3 class="card-title w-100">{{ $dataAbsent->title }} - {{ $dataAbsent->name_event }}</h3>
                     @can('Absensi.Edit')
-                        <a href="{{ route('admin.absensi.event.edit', $dataAbsent->id) }}" class="btn btn-primary btn-sm pe-2"
-                            wire:navigate>Edit</a>
+                    <a href="{{ route('admin.absensi.event.edit', $dataAbsent->absensi_id) }}"
+                        class="btn btn-primary btn-sm pe-2" wire:navigate>Edit</a>
                     @endcan
                 </div>
 
                 <div class="card-body row">
                     <div class="col-12">
                         @if (session()->has('message'))
-                            <div class="alert alert-success" role="alert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-hidden="true">×</button>
-                                {{ session('message') }}</i>
-                            </div>
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-hidden="true">×</button>
+                            {{ session('message') }}</i>
+                        </div>
                         @endif
                     </div>
                     <div class="col-lg-4">
@@ -56,18 +56,18 @@
                         class="btn btn-secondary btn-sm ms-2">Refresh</button>
 
                     @can('Absensi.Scan-Manual')
-                        <a href="{{ route('admin.absensi.scan-manual', $id) }}" class="btn btn-warning btn-sm ms-2"
-                            wire:navigate>Manual</a>
+                    <a href="{{ route('admin.absensi.scan-manual',$id) }}" class="btn btn-warning btn-sm ms-2"
+                        wire:navigate>Manual</a>
                     @endcan
 
                     @can('Absensi.Scan-RFID')
-                        <a href="{{ route('admin.absensi.scan-rfid', $id) }}" class="btn btn-primary btn-sm ms-2"
-                            wire:navigate>Scan RFID</a>
+                    <a href="{{ route('admin.absensi.scan-rfid',$id) }}" class="btn btn-primary btn-sm ms-2"
+                        wire:navigate>Scan RFID</a>
                     @endcan
 
                     @can('Absensi.ScanQR')
-                        <a href="{{ route('admin.absensi.scan-qr', $id) }}" class="btn btn-primary btn-sm ms-2"
-                            wire:navigate>Scan QRCode</a>
+                    <a href="{{ route('admin.absensi.scan-qr',$id) }}" class="btn btn-primary btn-sm ms-2"
+                        wire:navigate>Scan QRCode</a>
                     @endcan
                 </div>
 
@@ -79,7 +79,7 @@
                                     <th rowspan="2" valign="middle">No</th>
                                     <th rowspan="2">Nim</th>
                                     <th rowspan="2">Nama</th>
-                                    <th colspan="4  ">Kehadiran</th>
+                                    <th colspan="4">Kehadiran</th>
                                 </tr>
                                 <tr>
                                     <th>keterangan</th>

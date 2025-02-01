@@ -56,6 +56,7 @@
                                     <td class="d-flex justify-content-center border-0">
                                         <a href="{{ route('admin.mahasiswa.edit',$dt->id) }}" class="btn btn-sm btn-primary badge  mx-2" wire:navigate><i class="fe fe-edit"></i></a>
                                         <a onclick="deleteid(this)" id="{{$dt->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#ModalDelete" data-deskripsi="Hapus data [{{ $dt->nim  }}]{{ $dt->name  }}?"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('admin.mahasiswa.absensi', $dt->nim) }}" class="btn btn-sm btn-secondary badge mx-2" wire:navigate><i class="fa fa-info"></i></a>
                                     </td>
                                     @endcan
                                 </tr>

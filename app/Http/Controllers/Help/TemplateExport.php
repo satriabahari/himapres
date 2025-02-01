@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Help;
 
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
 class TemplateExport implements WithMultipleSheets
 {
@@ -27,7 +27,7 @@ class TemplateExport implements WithMultipleSheets
     }
 }
 
-class MySheet implements FromArray
+class MySheet implements FromArray, WithTitle
 {
     protected $sheetName;
     protected $data;

@@ -49,6 +49,9 @@ class Createmhs extends Component
     }
     public function saveExcel()
     {
+
+        // return redirect()->route('/');
+        // echo "<script>console.log('123')</script>";
         // Validasi file yang diunggah
         $this->validate([
             'file' => 'required|file|mimes:xlsx,xls|max:10240', // Maksimum 10MB
@@ -66,8 +69,16 @@ class Createmhs extends Component
                 $allowed_roles = ['Mahasiswa', 'Dosen', 'Tamu'];
                 if (in_array($row[3], $allowed_roles)) {
                     $notif = $this->createMhs($row[0], $row[1], $row[2], $row[3]);
+                    $this->nim = $row[0];
+                    $this->cardId = $row[1];
+                    $this->name = $row[2];
+                    $this->jabatan = $row[3];
                 } else {
                     $notif = $this->createMhs($row[0], $row[1], $row[2], null);
+                    $this->nim = $row[0];
+                    $this->cardId = $row[1];
+                    $this->name = $row[2];
+                    $this->jabatan = null;
                 }
             }
             $notifs[] = $notif;
@@ -75,6 +86,7 @@ class Createmhs extends Component
 
         session()->flash('excel', $notifs);
     }
+
     public function createMhs($nim, $cardId, $name, $jabatan)
     {
         try {
