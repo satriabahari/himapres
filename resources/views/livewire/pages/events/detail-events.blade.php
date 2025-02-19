@@ -37,8 +37,10 @@
                         </tr>
                     </table>
                     <div>
-                        <a href="{{ route('admin.events.edit',$idEvent) }}" id="table2-new-row-button" class="btn btn-primary btn-sm" wire:navigate>Edit Detail</a>
-                        <a wire:click="downloadDetailEvent()" id="table2-new-row-button" class="btn btn-primary btn-sm">Download</a>
+                        <a href="{{ route('admin.events.edit',$idEvent) }}" id="table2-new-row-button"
+                            class="btn btn-primary btn-sm" wire:navigate>Edit Detail</a>
+                        <a wire:click="downloadDetailEvent()" id="table2-new-row-button"
+                            class="btn btn-primary btn-sm">Download</a>
                     </div>
                 </div>
             </div>
@@ -62,13 +64,14 @@
                         </tr>
                         @foreach ($dataDivisi as $divisi )
                         <tr>
-                            <td id="{{ $divisi->id }}" wire:click="getAnggota('{{ $divisi->id }}')"> {{$divisi->name}}</td>
+                            <td id="{{ $divisi->id }}" wire:click="getAnggota('{{ $divisi->id }}')"> {{$divisi->name}}
+                            </td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
             </div>
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4>Daftar Abenst</h4>
@@ -77,19 +80,22 @@
                     <table class="table tomboltd">
                         @foreach ($dataAbsent as $absent )
                         <tr>
-                            <td id="{{ $absent->id }}" wire:click="navigateTo('{{ route('admin.absensi.data',$absent->id) }}')"> {{$absent->title}}</td>
+                            <td id="{{ $absent->id }}"
+                                wire:click="navigateTo('{{ route('admin.absensi.data',$absent->id) }}')">
+                                {{$absent->title}}</td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class=" col-md-8">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4>Daftar Panitia</h4>
-                        <a href="{{ route('admin.events.peserta',$idEvent) }}" id="table2-new-row-button" class="btn btn-primary btn-sm" wire:navigate>Add Panitia</a>
+                        <a href="{{ route('admin.events.peserta',$idEvent) }}" id="table2-new-row-button"
+                            class="btn btn-primary btn-sm" wire:navigate>Add Panitia</a>
                     </div>
                     <table class="table">
                         <tr>
@@ -104,7 +110,10 @@
                             <td class="pe-4">{{ $peserta->nim }}</td>
                             <td class="pe-4">{{ $peserta->divisi }}</td>
                             <td class="pe-4">
-                                <a onclick="deleteid(this)" id="{{$peserta->id}}" class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-deskripsi="Hapus kepanitiaan [{{ $peserta->nim }}]{{$peserta->name}}?">
+                                <a onclick="deleteid(this)" id="{{$peserta->id}}"
+                                    class="btn btn-sm btn-danger badge text-white mx-1" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                    data-deskripsi="Hapus kepanitiaan [{{ $peserta->nim }}]{{$peserta->name}}?">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
@@ -130,7 +139,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id="tomboldelete" class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
+                        <button type="button" id="tomboldelete" class="btn btn-primary"
+                            data-bs-dismiss="modal">Delete</button>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\Mahasiswa\Absensi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Pages\Roles\EditRoles;
@@ -49,7 +50,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', Dashboard::class)->name('dashboard');
+Route::get('/dashboard', Dashboard::class)->name('dashboard')->middleware('auth');
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/events', ListEvents::class)->name('events.index')->middleware('permission:Event.List');;
@@ -75,6 +76,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () 
     Route::get('/mahasiswa', Listmhs::class)->name('mahasiswa.index')->middleware('permission:Mahasiswa.List');
     Route::get('/mahasiswa/create', Createmhs::class)->name('mahasiswa.create')->middleware('permission:Mahasiswa.Create');
     Route::get('/mahasiswa/edit/{id}', Editmhs::class)->name('mahasiswa.edit')->middleware('permission:Mahasiswa.Edit');
+    Route::get("/mahasiswa/absensi/{nim}", Absensi::class)->name('mahasiswa.absensi')->middleware('permission:Mahasiswa.Edit');
+    // perbaiki
 
     Route::get('/posisi', Listposisi::class)->name('posisi.index');
     Route::get('/posisi/create', Createposisi::class)->name('posisi.create');

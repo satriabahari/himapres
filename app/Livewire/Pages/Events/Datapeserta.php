@@ -123,8 +123,10 @@ class Datapeserta extends Component
         $sheet1 = $data[0];
         $notifs = [];
         foreach ($sheet1 as $row) {
-            $notif = $this->createPanitia($row[0], $row[1], $this->idEvent);
+            $notif = $this->createPanitia($row[0], rand(1,12), $this->idEvent);
             $notifs[] = $notif;
+            $this->nim = $row[0];
+            $this->posisi = rand(1,12);
         }
 
         session()->flash('excel', $notifs);

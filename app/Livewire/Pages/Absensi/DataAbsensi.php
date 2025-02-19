@@ -24,6 +24,7 @@ class DataAbsensi extends Component
         $this->id = $id;
         $datas = ModelAbsensi::join('events', 'events.id', '=', 'absensi.event_id')
             ->where('absensi.id', $id)
+            ->select('absensi.id as absensi_id', 'events.*', 'absensi.*') // Explicitly select absensi.id
             ->first();
         $this->dataAbsent = $datas;
         $this->data = ModelDataKehadiran::where('absensi_id', $id)

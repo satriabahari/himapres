@@ -18,9 +18,10 @@ class ListAbsensi extends Component
     {
         $this->currentDateTime = Carbon::now()->toDateString();
 
-        $this->data = ModelEvents::whereDate('date_start', '<=', $this->currentDateTime)
-            ->whereDate('date_end', '>=', $this->currentDateTime)
-            ->get();
+        // $this->data = ModelEvents::whereDate('date_start', '<=', $this->currentDateTime)
+        //     ->whereDate('date_end', '>=', $this->currentDateTime)
+        //     ->get();
+        $this->data = ModelEvents::all();
 
         // $this->data = ModelEvents::all();
     }
